@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-chat-bot',
@@ -7,9 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ChatBotComponent implements OnInit {
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
   }
 
+
+  chatBot() {
+
+    // document.getElementById('router-outlet-div').;
+  }
 }

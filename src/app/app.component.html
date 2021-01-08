@@ -1,2 +1,29 @@
-<router-outlet></router-outlet>
+<div class="container" style="background-color: blue">
+  <div class="row">
+    <div class="col-md-6">
+      <h1>Final Year Project</h1>
+    </div>
+    <div class="col-md-2">
+      <button routerLink="/" type="submit" class="btn btn-primary">home</button>
+    </div>
+    <div class="col-md-2">
+      <button type="submit" class="btn btn-primary" routerLink="sign_in">sign in</button>
+    </div>
+    <div class="col-md-2">
+      <button type="submit" class="btn btn-primary" routerLink="sign_up">sign up</button>
+    </div>
+  </div>
+</div>
+<div class="router-outlet-div" id="router-outlet-div">
+
+  <router-outlet></router-outlet>
+
+</div>
+
+<div class="chat-message-div" id="chat-message-div">
+
+
+</div>
+
+
 <app-chat-bot></app-chat-bot>

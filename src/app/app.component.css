@@ -1,0 +1,8 @@
+.router-outlet-div{
+  display: inline-block;
+  width: 100%;
+}
+.chat-message-div{
+  display: inline-block;
+
+}
