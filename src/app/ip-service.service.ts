@@ -13,11 +13,9 @@ export class IpServiceService {
 
   public getIp() {
     return this.http.get('http://api.ipify.org/?format=json');
-
   }
 
   public changeIpAddress(val: string) {
     this.ipAddress = val;
-
   }
 }

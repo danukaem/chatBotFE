@@ -17,7 +17,6 @@ export class AppComponent implements OnInit {
     this.ip.getIp().subscribe((response: any) => {
       this.ip.ipAddress = response.ip;
       this.ipAddress = this.ip.ipAddress;
-
     });
   }
 
