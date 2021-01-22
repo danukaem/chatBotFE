@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {AppModule} from '../../../app.module';
 import {Item} from '../../../model/Item';
+import {CartItem} from '../../../model/CartItem';
+import {IpServiceService} from '../../../ip-service.service';
 
 @Component({
   selector: 'app-item-list',
@@ -11,8 +13,9 @@ import {Item} from '../../../model/Item';
 export class ItemListComponent implements OnInit {
 
   items: Item[];
+  quantity: number;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private ipService: IpServiceService) {
   }
 
   ngOnInit() {
@@ -24,11 +27,19 @@ export class ItemListComponent implements OnInit {
       headers
     }).subscribe(response => {
       this.items = response.body;
-      console.log(response.body);
     }, error => {
       alert('error');
     });
 
   }
 
+
+  addToCart(item: Item, quantity: number) {
+    let cItem = new CartItem();
+    cItem.item=item;
+    cItem.quantity = quantity;
+    console.log(cItem);
+    this.ipService.addToCart(cItem);
+
+  }
 }

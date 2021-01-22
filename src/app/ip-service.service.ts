@@ -1,5 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
+import {Item} from './model/Item';
+import {CartItem} from './model/CartItem';
 
 @Injectable({
   providedIn: 'root'
@@ -8,6 +10,7 @@ export class IpServiceService {
 
   ipAddress: string;
   userName: string;
+  cartItems: CartItem[];
 
   constructor(private http: HttpClient) {
   }
@@ -29,4 +32,18 @@ export class IpServiceService {
   public getUserName(): string {
     return this.userName;
   }
+
+  public addToCart(cartItem: CartItem) {
+    let cItems: CartItem[];
+    cItems.push(cartItem);
+    this.cartItems = cItems;
+
+
+    console.log(this.cartItems)
+  }
+
+  public removeFromCart(cartItem: CartItem) {
+    this.cartItems.pop(cartItem);
+  }
+
 }

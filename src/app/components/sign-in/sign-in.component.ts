@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {AppModule} from '../../app.module';
 import {IpServiceService} from '../../ip-service.service';
@@ -12,7 +12,8 @@ import {UserDetails} from '../../model/UserDetail';
 export class SignInComponent implements OnInit {
   userDetails = new UserDetails();
 
-  constructor(private http: HttpClient,private ipService:IpServiceService) { }
+  constructor(private http: HttpClient, private ipService: IpServiceService) {
+  }
 
   ngOnInit() {
   }
@@ -24,9 +25,16 @@ export class SignInComponent implements OnInit {
       observe: 'response',
       headers
     }).subscribe(response => {
-      alert('login success');
-      this.ipService.setUserName(response.body.userName)
-      console.log(response.body);
+      if (response.body == null) {
+        alert('enter valid user credentials');
+
+      }else{
+        alert('login success');
+
+        this.ipService.setUserName(response.body.userName)
+        console.log(response.body);
+      }
+
     }, error => {
       alert('error');
     });

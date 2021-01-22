@@ -2,7 +2,7 @@ import {Item} from './Item';
 
 export class CartItem {
   cartItemId: string;
-  items: Item[];
+  item: Item;
   quantity: number;
 
   constructor() {
