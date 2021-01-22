@@ -21,7 +21,6 @@ export class HomePageComponent implements OnInit {
       headers
     }).subscribe(response => {
       this.userList = response.body;
-      console.log(response.body);
     }, error => {
       // alert('error')
     });
