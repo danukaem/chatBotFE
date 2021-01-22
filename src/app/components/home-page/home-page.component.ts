@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {AppModule} from '../../app.module';
-import {User} from '../../model/User';
+import {UserDetails} from '../../model/UserDetail';
 
 @Component({
   selector: 'app-home-page',
@@ -9,7 +9,7 @@ import {User} from '../../model/User';
   styleUrls: ['./home-page.component.css']
 })
 export class HomePageComponent implements OnInit {
-  userList: User[];
+  userList: UserDetails[];
 
   constructor(private http: HttpClient) {
   }

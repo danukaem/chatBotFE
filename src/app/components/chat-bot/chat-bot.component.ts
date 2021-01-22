@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {IpServiceService} from '../../ip-service.service';
 
 @Component({
   selector: 'app-chat-bot',
@@ -15,7 +16,6 @@ export class ChatBotComponent implements OnInit {
 
 
   chatBot() {
-
     // document.getElementById('router-outlet-div').;
   }
 }

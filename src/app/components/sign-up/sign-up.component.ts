@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {UserDetails} from '../../entity/UserDetail';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {AppModule} from '../../app.module';
+import {UserDetails} from '../../model/UserDetail';
 
 @Component({
   selector: 'app-sign-up',
@@ -22,7 +22,7 @@ export class SignUpComponent implements OnInit {
 
     const headers = new HttpHeaders(({Authorization: 'Basic ' + btoa('user' + ':' + 'password')}));
 
-    this.http.post<any>(`${AppModule.resourceBaseURL}` + 'user/saveUser', this.userDetails, {
+    this.http.post<any>(`${AppModule.resourceBaseURL}` + 'user/signUp', this.userDetails, {
       observe: 'response',
       headers
     }).subscribe(response => {

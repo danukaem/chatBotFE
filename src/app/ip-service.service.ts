@@ -7,6 +7,7 @@ import {HttpClient} from '@angular/common/http';
 export class IpServiceService {
 
   ipAddress: string;
+  userName: string;
 
   constructor(private http: HttpClient) {
   }
@@ -19,5 +20,13 @@ export class IpServiceService {
   public changeIpAddress(val: string) {
     this.ipAddress = val;
 
+  }
+
+  public setUserName(userName: string) {
+    this.userName = userName;
+  }
+
+  public getUserName(): string {
+    return this.userName;
   }
 }
