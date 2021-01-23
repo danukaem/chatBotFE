@@ -3,6 +3,7 @@ import {IpServiceService} from '../../ip-service.service';
 import {CartItem} from '../../model/CartItem';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {AppModule} from '../../app.module';
+import {OrderDetail} from '../../model/OrderDetail';
 
 @Component({
   selector: 'app-cart',
@@ -25,11 +26,13 @@ export class CartComponent implements OnInit {
         headers
       }).subscribe(response => {
         this.cartItems = response.body;
+        this.ip.setCartItems(this.cartItems);
       }, error => {
-        alert('error');
+        console.log(error);
+        alert('error a');
       });
     }
-    else{
+    else {
       const headers = new HttpHeaders(({Authorization: 'Basic ' + btoa('user' + ':' + 'password')}));
 
       this.http.get<any>(`${AppModule.resourceBaseURL}` + 'cartItem/getCartItemListByIp/' + this.ip.ipAddress, {
@@ -37,11 +40,44 @@ export class CartComponent implements OnInit {
         headers
       }).subscribe(response => {
         this.cartItems = response.body;
+        this.ip.setCartItems(this.cartItems);
+
       }, error => {
-        alert('error');
+        console.log(error);
+
+        alert('error b');
       });
     }
-
+    this.ip.getUserById(this.ip.userId);
   }
 
+  placeOrder() {
+    // console.log(this.ip.cartItems)
+    // console.log(this.ip.userId)
+
+    let orderDetail = new OrderDetail();
+    orderDetail.user = this.ip.userDetails;
+
+    orderDetail.cartItems = this.ip.cartItems;
+    orderDetail.purchaseDate = new Date();
+    console.log('#################################################');
+    console.log(orderDetail);
+    console.log('#################################################');
+
+
+    const headers = new HttpHeaders(({Authorization: 'Basic ' + btoa('user' + ':' + 'password')}));
+    this.http.post<any>(`${AppModule.resourceBaseURL}` + 'orderDetails/addOrderDetails', orderDetail, {
+      observe: 'response',
+      headers
+    }).subscribe(response => {
+      this.cartItems = response.body;
+      this.ip.setCartItems(this.cartItems);
+
+    }, error => {
+      console.log(error);
+
+      alert('error 2');
+    });
+
+  }
 }

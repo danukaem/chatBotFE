@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {CartItem} from './model/CartItem';
 import {AppModule} from './app.module';
+import {UserDetails} from './model/UserDetail';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +13,7 @@ export class IpServiceService {
   userName: string;
   userId: string;
   cartItems: CartItem[] = [];
+  userDetails: UserDetails;
 
   constructor(private http: HttpClient) {
   }
@@ -43,6 +45,9 @@ export class IpServiceService {
   }
 
   public addToCart(cartItem: CartItem) {
+    console.log('cartitem');
+    console.log(cartItem);
+    console.log('cartitem');
     this.cartItems.push(cartItem);
     const headers = new HttpHeaders(({Authorization: 'Basic ' + btoa('user' + ':' + 'password')}));
 
@@ -52,6 +57,9 @@ export class IpServiceService {
     }).subscribe(response => {
       // this.items = response.body;
     }, error => {
+      console.log(error);
+
+
       alert('error');
     });
 
@@ -63,9 +71,35 @@ export class IpServiceService {
     return this.cartItems;
   }
 
+  public setCartItems(cartItems: CartItem[]): CartItem[] {
+    this.cartItems = cartItems;
+    return this.cartItems;
+  }
+
   // public removeFromCart(cartItem: CartItem) {
   //   this.cartItems.pop(cartItem);
   // }
 
+
+  public getUserById(userId: string): UserDetails {
+    let userDetails = new UserDetails();
+    const headers = new HttpHeaders(({Authorization: 'Basic ' + btoa('user' + ':' + 'password')}));
+
+    this.http.get<any>(`${AppModule.resourceBaseURL}` + 'user/getUserByUserId/' + this.userId, {
+      observe: 'response',
+      headers
+    }).subscribe(response => {
+      userDetails = response.body;
+      this.userDetails = userDetails;
+      console.log('********************************************');
+      console.log(userDetails);
+      console.log('********************************************');
+    }, error => {
+      console.log(error);
+
+      alert('error 1');
+    });
+    return userDetails;
+  }
 
 }
