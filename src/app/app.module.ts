@@ -9,6 +9,9 @@ import {HttpClientModule} from '@angular/common/http';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { SignInComponent } from './components/sign-in/sign-in.component';
 import { ChatBotComponent } from './components/chat-bot/chat-bot.component';
+import { ItemComponent } from './components/item/item.component';
+import { CartComponent } from './components/cart/cart.component';
+import { ItemListComponent } from './components/item/item-list/item-list.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +19,10 @@ import { ChatBotComponent } from './components/chat-bot/chat-bot.component';
     HomePageComponent,
     SignUpComponent,
     SignInComponent,
-    ChatBotComponent
+    ChatBotComponent,
+    ItemComponent,
+    CartComponent,
+    ItemListComponent
   ],
   imports: [
     BrowserModule,

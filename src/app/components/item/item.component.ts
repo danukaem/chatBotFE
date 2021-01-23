@@ -1,30 +1,34 @@
 import {Component, OnInit} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {Item} from '../../model/Item';
 import {AppModule} from '../../app.module';
-import {UserDetails} from '../../model/UserDetail';
 
 @Component({
-  selector: 'app-home-page',
-  templateUrl: './home-page.component.html',
-  styleUrls: ['./home-page.component.css']
+  selector: 'app-item',
+  templateUrl: './item.component.html',
+  styleUrls: ['./item.component.css']
 })
-export class HomePageComponent implements OnInit {
-  userList: UserDetails[];
+export class ItemComponent implements OnInit {
+
+  item = new Item();
 
   constructor(private http: HttpClient) {
   }
 
   ngOnInit() {
+  }
+
+  saveItem() {
     const headers = new HttpHeaders(({Authorization: 'Basic ' + btoa('user' + ':' + 'password')}));
-    this.http.get<any>(`${AppModule.resourceBaseURL}` + 'user/getUserList', {
+
+    this.http.post<any>(`${AppModule.resourceBaseURL}` + 'item/addItem', this.item, {
       observe: 'response',
       headers
     }).subscribe(response => {
-      this.userList = response.body;
+      alert('success');
+      console.log(response.body);
     }, error => {
-      // alert('error')
+      alert('error');
     });
-
   }
-
 }

@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="row">
+    <!--<div *ngFor="let cartItem of cartItems" class="col-md-8">-->
+    <div class="col-md-12 row">
+      <div *ngFor="let cartItem of cartItems" class="card col-md-4 " style="width: 18rem;">
+        <div class="card-body ">
+          <!--<div class="col-md-4"> {{cartItem.cartItemId}}</div>-->
+          <div class="col-md-4">{{cartItem.item.itemCode}}</div>
+          <div class="col-md-4">{{cartItem.item.itemName}}</div>
+          <div class="col-md-4">{{cartItem.item.description}}</div>
+          <div class="col-md-4">{{cartItem.quantity}}</div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <button  type="submit" class="btn btn-primary" (click)="placeOrder()">place order</button>
+    </div>
+  </div>
+</div>

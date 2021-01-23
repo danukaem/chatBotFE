@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {AppModule} from '../../app.module';
+import {IpServiceService} from '../../ip-service.service';
+import {UserDetails} from '../../model/UserDetail';
 
 @Component({
   selector: 'app-sign-in',
@@ -6,10 +10,33 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./sign-in.component.css']
 })
 export class SignInComponent implements OnInit {
+  userDetails = new UserDetails();
 
-  constructor() { }
+  constructor(private http: HttpClient, private ipService: IpServiceService) {
+  }
 
   ngOnInit() {
   }
 
+  signin() {
+    const headers = new HttpHeaders(({Authorization: 'Basic ' + btoa('user' + ':' + 'password')}));
+
+    this.http.post<any>(`${AppModule.resourceBaseURL}` + 'user/signIn', this.userDetails, {
+      observe: 'response',
+      headers
+    }).subscribe(response => {
+      if (response.body == null) {
+        alert('enter valid user credentials');
+
+      }else{
+        alert('login success');
+
+        this.ipService.setUserName(response.body.userName)
+        this.ipService.setUserId(response.body.userId)
+      }
+
+    }, error => {
+      alert('error');
+    });
+  }
 }

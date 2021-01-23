@@ -1,0 +1,28 @@
+<div class="container">
+  <h1>Item List</h1>
+  <div class="row">
+
+    <div *ngFor="let item of items" class="card col-md-6 " style="width: 18rem;">
+      <div class="card-body ">
+        <div class="row">
+          <div class="col-md-8">
+            <h5 class="card-title">{{item.itemName}}</h5>
+            <p class="card-text">{{item.itemId}}</p>
+            <p class="card-text">{{item.itemCode}}</p>
+            <p class="card-text">{{item.description}}</p>
+            <p class="card-text">{{item.price}}</p>
+          </div>
+          <div class="col-md-4">
+            <input #quantity  type="number" class="form-control"  placeholder="quantity">
+
+            <button type="submit" class="btn btn-primary" (click)="addToCart(item,quantity.value)">add to cart</button>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
