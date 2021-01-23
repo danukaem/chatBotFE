@@ -3,7 +3,6 @@
   <div class="row">
 
     <div *ngFor="let item of items" class="card col-md-6 " style="width: 18rem;">
-      <!--<img class="card-img-top" src="..." alt="Card image cap">-->
       <div class="card-body ">
         <div class="row">
           <div class="col-md-8">
@@ -14,9 +13,9 @@
             <p class="card-text">{{item.price}}</p>
           </div>
           <div class="col-md-4">
-            <input [(ngModel)]="quantity" name="quantity" type="text" class="form-control"  placeholder="quantity">
+            <input #quantity  type="number" class="form-control"  placeholder="quantity">
 
-            <button type="submit" class="btn btn-primary" (click)="addToCart(item,quantity)">add to cart</button>
+            <button type="submit" class="btn btn-primary" (click)="addToCart(item,quantity.value)">add to cart</button>
 
           </div>
         </div>

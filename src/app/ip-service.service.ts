@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
-import {Item} from './model/Item';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {CartItem} from './model/CartItem';
+import {AppModule} from './app.module';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +10,8 @@ export class IpServiceService {
 
   ipAddress: string;
   userName: string;
-  cartItems: CartItem[];
+  userId: string;
+  cartItems: CartItem[] = [];
 
   constructor(private http: HttpClient) {
   }
@@ -33,17 +34,38 @@ export class IpServiceService {
     return this.userName;
   }
 
+  public setUserId(userId: string) {
+    this.userId = userId;
+  }
+
+  public getUserId(): string {
+    return this.userId;
+  }
+
   public addToCart(cartItem: CartItem) {
-    let cItems: CartItem[];
-    cItems.push(cartItem);
-    this.cartItems = cItems;
+    this.cartItems.push(cartItem);
+    const headers = new HttpHeaders(({Authorization: 'Basic ' + btoa('user' + ':' + 'password')}));
+
+    this.http.post<any>(`${AppModule.resourceBaseURL}` + 'cartItem/addCartItems', this.cartItems, {
+      observe: 'response',
+      headers
+    }).subscribe(response => {
+      // this.items = response.body;
+    }, error => {
+      alert('error');
+    });
 
 
     console.log(this.cartItems)
   }
 
-  public removeFromCart(cartItem: CartItem) {
-    this.cartItems.pop(cartItem);
+  public getCartItems(): CartItem[] {
+    return this.cartItems;
   }
+
+  // public removeFromCart(cartItem: CartItem) {
+  //   this.cartItems.pop(cartItem);
+  // }
+
 
 }

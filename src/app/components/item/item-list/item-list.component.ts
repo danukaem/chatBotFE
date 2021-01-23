@@ -13,14 +13,12 @@ import {IpServiceService} from '../../../ip-service.service';
 export class ItemListComponent implements OnInit {
 
   items: Item[];
-  quantity: number;
 
   constructor(private http: HttpClient, private ipService: IpServiceService) {
   }
 
   ngOnInit() {
     const headers = new HttpHeaders(({Authorization: 'Basic ' + btoa('user' + ':' + 'password')}));
-
 
     this.http.get<any>(`${AppModule.resourceBaseURL}` + 'item/getItemList', {
       observe: 'response',
@@ -34,11 +32,12 @@ export class ItemListComponent implements OnInit {
   }
 
 
-  addToCart(item: Item, quantity: number) {
+  addToCart(item: Item, quantity) {
     let cItem = new CartItem();
-    cItem.item=item;
+    cItem.item = item;
     cItem.quantity = quantity;
-    console.log(cItem);
+    cItem.userId=this.ipService.userId;
+    cItem.ipAddress=this.ipService.ipAddress;
     this.ipService.addToCart(cItem);
 
   }

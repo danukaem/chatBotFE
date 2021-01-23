@@ -32,7 +32,7 @@ export class SignInComponent implements OnInit {
         alert('login success');
 
         this.ipService.setUserName(response.body.userName)
-        console.log(response.body);
+        this.ipService.setUserId(response.body.userId)
       }
 
     }, error => {
