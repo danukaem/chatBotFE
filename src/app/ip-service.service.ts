@@ -59,7 +59,6 @@ export class IpServiceService {
     }, error => {
       console.log(error);
 
-
       alert('error');
     });
 
