@@ -52,8 +52,6 @@ export class CartComponent implements OnInit {
   }
 
   placeOrder() {
-    // console.log(this.ip.cartItems)
-    // console.log(this.ip.userId)
 
     let orderDetail = new OrderDetail();
     orderDetail.user = this.ip.userDetails;
@@ -70,7 +68,7 @@ export class CartComponent implements OnInit {
       observe: 'response',
       headers
     }).subscribe(response => {
-      this.cartItems = response.body;
+      this.ip.setOrderId(response.body);
       this.ip.setCartItems(this.cartItems);
 
     }, error => {

@@ -14,6 +14,7 @@ export class IpServiceService {
   userId: string;
   cartItems: CartItem[] = [];
   userDetails: UserDetails;
+  orderId:string;
 
   constructor(private http: HttpClient) {
   }
@@ -99,4 +100,12 @@ export class IpServiceService {
     return userDetails;
   }
 
+
+  getOrderId(): string {
+    return this.orderId;
+  }
+
+  setOrderId(value: string) {
+    this.orderId = value;
+  }
 }
