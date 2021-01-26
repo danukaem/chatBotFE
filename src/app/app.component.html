@@ -1,50 +1,50 @@
 <html>
- <body>  
-    <div class="container" style="background-color: rgb(169, 169, 240)">
+ <body>
+    <div class="container" >
       <div class="row">
         <div class="col-md-4">
           <h1>Final Year Project {{ipAddress}}</h1>
         </div>
-        
+
         <nav class="  col-md-4  col-lg-8 navbar navbar-expand-lg  navbar navbar-light" style="background-color: #eacdf1;">
           <a class="navbar-brand" href="#"></a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
-        
+
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
               <li class="nav-item col-md-2 ">
-                <a class="nav-link " routerLink="/" >Home </a>
+                <a class="nav-link " routerLink="/" ><h4>Home</h4> </a>
               </li>
               <li class="nav-item col-md-2 ">
-                <a class="nav-link" routerLink="sign_in" >sign in </a>
-              </li>
-           
-              <li class="nav-item col-md-2">
-                <a class="nav-link " routerLink="sign_up" >sign up</a>
+                <a class="nav-link" routerLink="sign_in" ><h4>sign in</h4> </a>
               </li>
 
               <li class="nav-item col-md-2">
-                <a class="nav-link " routerLink="item"   >item</a>
+                <a class="nav-link " routerLink="sign_up" ><h4>sign up</h4></a>
               </li>
 
               <li class="nav-item col-md-2">
-                <a class="nav-link "  routerLink="cart">cart</a>
+                <a class="nav-link " routerLink="item"   ><h4>item</h4></a>
               </li>
 
               <li class="nav-item col-md-2">
-                <a class="nav-link "  routerLink="itemList"  >view item list</a>
+                <a class="nav-link "  routerLink="cart"><h4>cart</h4></a>
+              </li>
+
+              <li class="nav-item col-md-2">
+                <a class="nav-link "  routerLink="itemList"  ><h4>view item list</h4></a>
               </li>
             </ul>
-       
+
           </div>
         </nav>
       </div>
     </div><br><br>
     <div class="router-outlet-div" id="router-outlet-div">
-        
-      
+
+
       <router-outlet></router-outlet>
 
     </div>
