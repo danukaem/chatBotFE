@@ -2,8 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {IpServiceService} from '../../ip-service.service';
 import {CartItem} from '../../model/CartItem';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {AppModule} from '../../app.module';
 import {OrderDetail} from '../../model/OrderDetail';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-cart',
@@ -13,15 +13,17 @@ import {OrderDetail} from '../../model/OrderDetail';
 export class CartComponent implements OnInit {
 
   cartItems: CartItem[] = [];
+  resourceBaseURL: string;
 
   constructor(private ip: IpServiceService, private http: HttpClient) {
+    this.resourceBaseURL = environment.resourceBaseURL;
   }
 
   ngOnInit() {
     if (this.ip.userId != undefined) {
       const headers = new HttpHeaders(({Authorization: 'Basic ' + btoa('user' + ':' + 'password')}));
 
-      this.http.get<any>(`${AppModule.resourceBaseURL}` + 'cartItem/getCartItemListByUserId/' + this.ip.userId, {
+      this.http.get<any>(`${this.resourceBaseURL}` + 'cartItem/getCartItemListByUserId/' + this.ip.userId, {
         observe: 'response',
         headers
       }).subscribe(response => {
@@ -35,7 +37,7 @@ export class CartComponent implements OnInit {
     else {
       const headers = new HttpHeaders(({Authorization: 'Basic ' + btoa('user' + ':' + 'password')}));
 
-      this.http.get<any>(`${AppModule.resourceBaseURL}` + 'cartItem/getCartItemListByIp/' + this.ip.ipAddress, {
+      this.http.get<any>(`${this.resourceBaseURL}` + 'cartItem/getCartItemListByIp/' + this.ip.ipAddress, {
         observe: 'response',
         headers
       }).subscribe(response => {
@@ -66,7 +68,7 @@ export class CartComponent implements OnInit {
 
 
     const headers = new HttpHeaders(({Authorization: 'Basic ' + btoa('user' + ':' + 'password')}));
-    this.http.post<any>(`${AppModule.resourceBaseURL}` + 'orderDetails/addOrderDetails', orderDetail, {
+    this.http.post<any>(`${this.resourceBaseURL}` + 'orderDetails/addOrderDetails', orderDetail, {
       observe: 'response',
       headers
     }).subscribe(response => {

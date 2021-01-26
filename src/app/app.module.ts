@@ -28,7 +28,8 @@ import { ItemListComponent } from './components/item/item-list/item-list.compone
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule,
+    FormsModule
+   
   ],
   providers: [],
   bootstrap: [AppComponent]

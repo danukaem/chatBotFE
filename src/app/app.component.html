@@ -1,38 +1,58 @@
-<div class="container" style="background-color: blue">
-  <div class="row">
-    <div class="col-md-4">
-      <h1>Final Year Project {{ipAddress}}</h1>
-    </div>
-    <div class="col-md-1">
-      <button routerLink="/" type="submit" class="btn btn-primary">home</button>
-    </div>
-    <div class="col-md-1">
-      <button type="submit" class="btn btn-primary" routerLink="sign_in">sign in</button>
-    </div>
-    <div class="col-md-1">
-      <button type="submit" class="btn btn-primary" routerLink="sign_up">sign up</button>
-    </div>
-    <div class="col-md-1">
-      <button type="submit" class="btn btn-primary" routerLink="item">item</button>
-    </div>
-    <div class="col-md-1">
-      <button type="submit" class="btn btn-primary" routerLink="cart">cart</button>
-    </div>
-    <div class="col-md-1">
-      <button routerLink="itemList" type="submit" class="btn btn-primary">view item list</button>
-    </div>
-  </div>
-</div>
-<div class="router-outlet-div" id="router-outlet-div">
+<html>
+ <body>  
+    <div class="container" style="background-color: rgb(169, 169, 240)">
+      <div class="row">
+        <div class="col-md-4">
+          <h1>Final Year Project {{ipAddress}}</h1>
+        </div>
+        
+        <nav class="  col-md-4  col-lg-8 navbar navbar-expand-lg  navbar navbar-light" style="background-color: #eacdf1;">
+          <a class="navbar-brand" href="#"></a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item col-md-2 ">
+                <a class="nav-link " routerLink="/" >Home </a>
+              </li>
+              <li class="nav-item col-md-2 ">
+                <a class="nav-link" routerLink="sign_in" >sign in </a>
+              </li>
+           
+              <li class="nav-item col-md-2">
+                <a class="nav-link " routerLink="sign_up" >sign up</a>
+              </li>
 
-  <router-outlet></router-outlet>
+              <li class="nav-item col-md-2">
+                <a class="nav-link " routerLink="item"   >item</a>
+              </li>
 
-</div>
+              <li class="nav-item col-md-2">
+                <a class="nav-link "  routerLink="cart">cart</a>
+              </li>
 
-<div class="chat-message-div" id="chat-message-div">
+              <li class="nav-item col-md-2">
+                <a class="nav-link "  routerLink="itemList"  >view item list</a>
+              </li>
+            </ul>
+       
+          </div>
+        </nav>
+      </div>
+    </div><br><br>
+    <div class="router-outlet-div" id="router-outlet-div">
+        
+      
+      <router-outlet></router-outlet>
+
+    </div>
+
+    <div class="chat-message-div" id="chat-message-div">
 
 
-</div>
-
-
-<app-chat-bot></app-chat-bot>
+    </div>
+    <app-chat-bot></app-chat-bot>
+</body>
+</html>
