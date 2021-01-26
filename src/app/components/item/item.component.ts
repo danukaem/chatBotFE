@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Item} from '../../model/Item';
-import {AppModule} from '../../app.module';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-item',
@@ -11,8 +11,10 @@ import {AppModule} from '../../app.module';
 export class ItemComponent implements OnInit {
 
   item = new Item();
+  resourceBaseURL: string;
 
   constructor(private http: HttpClient) {
+    this.resourceBaseURL = environment.resourceBaseURL;
   }
 
   ngOnInit() {
@@ -21,7 +23,7 @@ export class ItemComponent implements OnInit {
   saveItem() {
     const headers = new HttpHeaders(({Authorization: 'Basic ' + btoa('user' + ':' + 'password')}));
 
-    this.http.post<any>(`${AppModule.resourceBaseURL}` + 'item/addItem', this.item, {
+    this.http.post<any>(`${this.resourceBaseURL}` + 'item/addItem', this.item, {
       observe: 'response',
       headers
     }).subscribe(response => {

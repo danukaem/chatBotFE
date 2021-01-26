@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {AppModule} from '../../app.module';
 import {IpServiceService} from '../../ip-service.service';
 import {UserDetails} from '../../model/UserDetail';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-sign-in',
@@ -11,8 +11,10 @@ import {UserDetails} from '../../model/UserDetail';
 })
 export class SignInComponent implements OnInit {
   userDetails = new UserDetails();
+  resourceBaseURL: string;
 
   constructor(private http: HttpClient, private ipService: IpServiceService) {
+    this.resourceBaseURL = environment.resourceBaseURL;
   }
 
   ngOnInit() {
@@ -21,7 +23,7 @@ export class SignInComponent implements OnInit {
   signin() {
     const headers = new HttpHeaders(({Authorization: 'Basic ' + btoa('user' + ':' + 'password')}));
 
-    this.http.post<any>(`${AppModule.resourceBaseURL}` + 'user/signIn', this.userDetails, {
+    this.http.post<any>(`${this.resourceBaseURL}` + 'user/signIn', this.userDetails, {
       observe: 'response',
       headers
     }).subscribe(response => {

@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {AppModule} from '../../../app.module';
 import {Item} from '../../../model/Item';
 import {CartItem} from '../../../model/CartItem';
 import {IpServiceService} from '../../../ip-service.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-item-list',
@@ -13,14 +13,16 @@ import {IpServiceService} from '../../../ip-service.service';
 export class ItemListComponent implements OnInit {
 
   items: Item[];
+  resourceBaseURL: string;
 
   constructor(private http: HttpClient, private ipService: IpServiceService) {
+    this.resourceBaseURL = environment.resourceBaseURL;
   }
 
   ngOnInit() {
     const headers = new HttpHeaders(({Authorization: 'Basic ' + btoa('user' + ':' + 'password')}));
 
-    this.http.get<any>(`${AppModule.resourceBaseURL}` + 'item/getItemList', {
+    this.http.get<any>(`${this.resourceBaseURL}` + 'item/getItemList', {
       observe: 'response',
       headers
     }).subscribe(response => {

@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {AppModule} from '../../app.module';
 import {UserDetails} from '../../model/UserDetail';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-home-page',
@@ -10,13 +10,15 @@ import {UserDetails} from '../../model/UserDetail';
 })
 export class HomePageComponent implements OnInit {
   userList: UserDetails[];
+  resourceBaseURL: string;
 
   constructor(private http: HttpClient) {
+    this.resourceBaseURL = environment.resourceBaseURL;
   }
 
   ngOnInit() {
     const headers = new HttpHeaders(({Authorization: 'Basic ' + btoa('user' + ':' + 'password')}));
-    this.http.get<any>(`${AppModule.resourceBaseURL}` + 'user/getUserList', {
+    this.http.get<any>(`${this.resourceBaseURL}` + 'user/getUserList', {
       observe: 'response',
       headers
     }).subscribe(response => {

@@ -1,8 +1,8 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {CartItem} from './model/CartItem';
-import {AppModule} from './app.module';
 import {UserDetails} from './model/UserDetail';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -14,8 +14,10 @@ export class IpServiceService {
   userId: string;
   cartItems: CartItem[] = [];
   userDetails: UserDetails;
+  resourceBaseURL: string;
 
   constructor(private http: HttpClient) {
+    this.resourceBaseURL = environment.resourceBaseURL;
   }
 
   public getIp() {
@@ -51,7 +53,7 @@ export class IpServiceService {
     this.cartItems.push(cartItem);
     const headers = new HttpHeaders(({Authorization: 'Basic ' + btoa('user' + ':' + 'password')}));
 
-    this.http.post<any>(`${AppModule.resourceBaseURL}` + 'cartItem/addCartItems', this.cartItems, {
+    this.http.post<any>(`${this.resourceBaseURL}` + 'cartItem/addCartItems', this.cartItems, {
       observe: 'response',
       headers
     }).subscribe(response => {
@@ -85,7 +87,7 @@ export class IpServiceService {
     let userDetails = new UserDetails();
     const headers = new HttpHeaders(({Authorization: 'Basic ' + btoa('user' + ':' + 'password')}));
 
-    this.http.get<any>(`${AppModule.resourceBaseURL}` + 'user/getUserByUserId/' + this.userId, {
+    this.http.get<any>(`${this.resourceBaseURL}` + 'user/getUserByUserId/' + this.userId, {
       observe: 'response',
       headers
     }).subscribe(response => {
