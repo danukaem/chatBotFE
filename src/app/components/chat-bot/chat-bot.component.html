@@ -8,3 +8,19 @@
     </div>
   </div>
 </div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <label>
+        robot:
+      </label>
+      <label>{{robotMessage}}</label>
+      <br>
+      <label>user:</label>
+      <label>{{userMessage}}</label>
+      <input [(ngModel)]="userMessage" name="userName" type="text" class="form-control" placeholder="type message">
+      <button (click)="sendMessage()">enter</button>
+    </div>
+  </div>
+
+</div>

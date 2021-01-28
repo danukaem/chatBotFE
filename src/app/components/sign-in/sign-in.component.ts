@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {IpServiceService} from '../../ip-service.service';
 import {UserDetails} from '../../model/UserDetail';
-import { environment } from 'src/environments/environment';
+import {environment} from 'src/environments/environment';
 
 @Component({
   selector: 'app-sign-in',
@@ -30,7 +30,7 @@ export class SignInComponent implements OnInit {
       if (response.body == null) {
         alert('enter valid user credentials');
 
-      }else{
+      } else {
         alert('login success');
 
         this.ipService.setUserName(response.body.userName)

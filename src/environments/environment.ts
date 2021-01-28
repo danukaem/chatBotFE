@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  resourceBaseURL: 'http://localhost:8080/'
+  resourceBaseURL: 'http://localhost:8080/',
+  chatServiceURL: 'http://localhost:5000/'
 };
 
 /*
