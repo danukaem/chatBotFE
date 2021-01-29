@@ -13,25 +13,34 @@ export class ChatBotComponent implements OnInit {
   robotMessage: string;
 
   chatServiceURL: string;
+  resourceBaseURL: string;
+  isVisibleChat: boolean;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private ipService: IpServiceService) {
     this.chatServiceURL = environment.chatServiceURL;
+    this.resourceBaseURL = environment.resourceBaseURL;
   }
 
   ngOnInit() {
+    this.userMessage = '';
+    this.robotMessage = 'Hey!, how can i help you?';
+    this.isVisibleChat = false;
+    console.log('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa');
   }
 
 
-  chatBot() {
-    // document.getElementById('router-outlet-div').;
+  openChatBot() {
+    this.isVisibleChat = !this.isVisibleChat;
   }
 
   sendMessage() {
 
     console.log(this.userMessage)
+    console.log(this.ipService.getSessionId())
     const headers = new HttpHeaders(({Authorization: 'Basic ' + btoa('user' + ':' + 'password')}));
 
-    this.http.get<any>(`${this.chatServiceURL}` + 'chat?message=' + this.userMessage, {
+    // this.http.get<any>(`${this.chatServiceURL}` + 'chat?message=' + this.userMessage, {
+    this.http.get<any>(`${this.resourceBaseURL}` + 'chatMessage/chat?message=' + this.userMessage + '&sessionId=' + this.ipService.getSessionId(), {
       observe: 'response',
       headers
     }).subscribe(response => {

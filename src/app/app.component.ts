@@ -18,6 +18,10 @@ export class AppComponent implements OnInit {
       this.ip.ipAddress = response.ip;
       this.ipAddress = this.ip.ipAddress;
 
+      let sessionId = this.ipAddress;
+      sessionId = sessionId.replaceAll('.', '') + Date.now();
+      this.ip.setSessionId(sessionId);
+
     });
   }
 

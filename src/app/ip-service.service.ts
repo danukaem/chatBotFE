@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {CartItem} from './model/CartItem';
 import {UserDetails} from './model/UserDetail';
-import { environment } from 'src/environments/environment';
+import {environment} from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +15,7 @@ export class IpServiceService {
   cartItems: CartItem[] = [];
   userDetails: UserDetails;
   resourceBaseURL: string;
+  sessionId: string;
 
   constructor(private http: HttpClient) {
     this.resourceBaseURL = environment.resourceBaseURL;
@@ -27,6 +28,12 @@ export class IpServiceService {
 
   public changeIpAddress(val: string) {
     this.ipAddress = val;
+
+  }
+
+
+  public getIpAddress() {
+    return this.ipAddress;
 
   }
 
@@ -103,5 +110,14 @@ export class IpServiceService {
     });
     return userDetails;
   }
+
+  public setSessionId(sessionId: string) {
+    this.sessionId = sessionId;
+  }
+
+  public getSessionId(): string {
+    return this.sessionId;
+  }
+
 
 }
