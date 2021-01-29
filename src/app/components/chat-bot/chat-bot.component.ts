@@ -35,12 +35,12 @@ export class ChatBotComponent implements OnInit {
 
   sendMessage() {
 
-    console.log(this.userMessage)
-    console.log(this.ipService.getSessionId())
     const headers = new HttpHeaders(({Authorization: 'Basic ' + btoa('user' + ':' + 'password')}));
 
-    // this.http.get<any>(`${this.chatServiceURL}` + 'chat?message=' + this.userMessage, {
-    this.http.get<any>(`${this.resourceBaseURL}` + 'chatMessage/chat?message=' + this.userMessage + '&sessionId=' + this.ipService.getSessionId(), {
+    this.http.get<any>(`${this.resourceBaseURL}` + 'chatMessage/chat?chatMessage=' + this.userMessage + '&chatSessionId=' + this.ipService.getSessionId()
+      + '&userId=' + (this.ipService.getUserId() === undefined ? '' : this.ipService.getUserId()) + '&ipAddress=' + (this.ipService.getIpAddress() === undefined ? '' : this.ipService.getIpAddress())
+      + '&orderId=' + (this.ipService.getOrderId() === undefined ? '' : this.ipService.getOrderId()) + '&stateOfOrder=' + (this.ipService.getStateOfOrder() === undefined ? 'PENDING' : this.ipService.getStateOfOrder())
+      + '&cartId=' + (this.ipService.getCartId() === undefined ? '' : this.ipService.getCartId()), {
       observe: 'response',
       headers
     }).subscribe(response => {

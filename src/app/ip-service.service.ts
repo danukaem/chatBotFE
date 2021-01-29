@@ -16,6 +16,9 @@ export class IpServiceService {
   userDetails: UserDetails;
   resourceBaseURL: string;
   sessionId: string;
+  stateOfOrder: string;
+  cartId: string;
+  orderId: string;
 
   constructor(private http: HttpClient) {
     this.resourceBaseURL = environment.resourceBaseURL;
@@ -54,9 +57,6 @@ export class IpServiceService {
   }
 
   public addToCart(cartItem: CartItem) {
-    console.log('cartitem');
-    console.log(cartItem);
-    console.log('cartitem');
     this.cartItems.push(cartItem);
     const headers = new HttpHeaders(({Authorization: 'Basic ' + btoa('user' + ':' + 'password')}));
 
@@ -67,13 +67,9 @@ export class IpServiceService {
       // this.items = response.body;
     }, error => {
       console.log(error);
-
-
       alert('error');
     });
 
-
-    console.log(this.cartItems)
   }
 
   public getCartItems(): CartItem[] {
@@ -100,9 +96,6 @@ export class IpServiceService {
     }).subscribe(response => {
       userDetails = response.body;
       this.userDetails = userDetails;
-      console.log('********************************************');
-      console.log(userDetails);
-      console.log('********************************************');
     }, error => {
       console.log(error);
 
@@ -119,5 +112,36 @@ export class IpServiceService {
     return this.sessionId;
   }
 
+  public setStateOfOrder(stateOfOrder: string) {
+
+    this.stateOfOrder = stateOfOrder;
+  }
+
+  public getStateOfOrder() {
+
+    return this.stateOfOrder;
+  }
+
+
+  public setCartId(cartId: string) {
+
+    this.cartId = cartId;
+  }
+
+  public getCartId() {
+
+    return this.cartId;
+  }
+
+
+  public setOrderId(orderId: string) {
+
+    this.orderId = orderId;
+  }
+
+  public getOrderId() {
+
+    return this.orderId;
+  }
 
 }
