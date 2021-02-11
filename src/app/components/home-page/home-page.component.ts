@@ -1,7 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {UserDetails} from '../../model/UserDetail';
-import { environment } from 'src/environments/environment';
+import {environment} from 'src/environments/environment';
+import * as $ from '../../../../node_modules/jquery';
+
 
 @Component({
   selector: 'app-home-page',
@@ -26,6 +28,11 @@ export class HomePageComponent implements OnInit {
     }, error => {
       // alert('error')
     });
+
+    $('#sidebar-div').click(() => {
+      $('.sidebar').toggleClass('fliph');
+    });
+
 
   }
 
