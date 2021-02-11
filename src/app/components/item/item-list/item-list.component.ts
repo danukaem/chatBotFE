@@ -3,7 +3,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Item} from '../../../model/Item';
 import {CartItem} from '../../../model/CartItem';
 import {IpServiceService} from '../../../ip-service.service';
-import { environment } from 'src/environments/environment';
+import {environment} from 'src/environments/environment';
 
 @Component({
   selector: 'app-item-list',
@@ -20,16 +20,16 @@ export class ItemListComponent implements OnInit {
   }
 
   ngOnInit() {
-    const headers = new HttpHeaders(({Authorization: 'Basic ' + btoa('user' + ':' + 'password')}));
-
-    this.http.get<any>(`${this.resourceBaseURL}` + 'item/getItemList', {
-      observe: 'response',
-      headers
-    }).subscribe(response => {
-      this.items = response.body;
-    }, error => {
-      alert('error');
-    });
+    // const headers = new HttpHeaders(({Authorization: 'Basic ' + btoa('user' + ':' + 'password')}));
+    //
+    // this.http.get<any>(`${this.resourceBaseURL}` + 'item/getItemList', {
+    //   observe: 'response',
+    //   headers
+    // }).subscribe(response => {
+    //   this.items = response.body;
+    // }, error => {
+    //   alert('error');
+    // });
 
   }
 
@@ -38,8 +38,8 @@ export class ItemListComponent implements OnInit {
     let cItem = new CartItem();
     cItem.item = item;
     cItem.quantity = quantity;
-    cItem.userId=this.ipService.userId;
-    cItem.ipAddress=this.ipService.ipAddress;
+    cItem.userId = this.ipService.userId;
+    cItem.ipAddress = this.ipService.ipAddress;
     this.ipService.addToCart(cItem);
 
   }
