@@ -20,66 +20,66 @@ export class CartComponent implements OnInit {
   }
 
   ngOnInit() {
-    if (this.ip.userId != undefined) {
-      const headers = new HttpHeaders(({Authorization: 'Basic ' + btoa('user' + ':' + 'password')}));
-
-      this.http.get<any>(`${this.resourceBaseURL}` + 'cartItem/getCartItemListByUserId/' + this.ip.userId, {
-        observe: 'response',
-        headers
-      }).subscribe(response => {
-        this.cartItems = response.body;
-        this.ip.setCartItems(this.cartItems);
-      }, error => {
-        console.log(error);
-        alert('error a');
-      });
-    }
-    else {
-      const headers = new HttpHeaders(({Authorization: 'Basic ' + btoa('user' + ':' + 'password')}));
-
-      this.http.get<any>(`${this.resourceBaseURL}` + 'cartItem/getCartItemListByIp/' + this.ip.ipAddress, {
-        observe: 'response',
-        headers
-      }).subscribe(response => {
-        this.cartItems = response.body;
-        this.ip.setCartItems(this.cartItems);
-
-      }, error => {
-        console.log(error);
-
-        alert('error b');
-      });
-    }
-    this.ip.getUserById(this.ip.userId);
+    // if (this.ip.userId != undefined) {
+    //   const headers = new HttpHeaders(({Authorization: 'Basic ' + btoa('user' + ':' + 'password')}));
+    //
+    //   this.http.get<any>(`${this.resourceBaseURL}` + 'cartItem/getCartItemListByUserId/' + this.ip.userId, {
+    //     observe: 'response',
+    //     headers
+    //   }).subscribe(response => {
+    //     this.cartItems = response.body;
+    //     this.ip.setCartItems(this.cartItems);
+    //   }, error => {
+    //     console.log(error);
+    //     alert('error a');
+    //   });
+    // }
+    // else {
+    //   const headers = new HttpHeaders(({Authorization: 'Basic ' + btoa('user' + ':' + 'password')}));
+    //
+    //   this.http.get<any>(`${this.resourceBaseURL}` + 'cartItem/getCartItemListByIp/' + this.ip.ipAddress, {
+    //     observe: 'response',
+    //     headers
+    //   }).subscribe(response => {
+    //     this.cartItems = response.body;
+    //     this.ip.setCartItems(this.cartItems);
+    //
+    //   }, error => {
+    //     console.log(error);
+    //
+    //     alert('error b');
+    //   });
+    // }
+    // this.ip.getUserById(this.ip.userId);
   }
 
   placeOrder() {
     // console.log(this.ip.cartItems)
     // console.log(this.ip.userId)
 
-    let orderDetail = new OrderDetail();
-    orderDetail.user = this.ip.userDetails;
-
-    orderDetail.cartItems = this.ip.cartItems;
-    orderDetail.purchaseDate = new Date();
-    console.log('#################################################');
-    console.log(orderDetail);
-    console.log('#################################################');
-
-
-    const headers = new HttpHeaders(({Authorization: 'Basic ' + btoa('user' + ':' + 'password')}));
-    this.http.post<any>(`${this.resourceBaseURL}` + 'orderDetails/addOrderDetails', orderDetail, {
-      observe: 'response',
-      headers
-    }).subscribe(response => {
-      this.cartItems = response.body;
-      this.ip.setCartItems(this.cartItems);
-
-    }, error => {
-      console.log(error);
-
-      alert('error 2');
-    });
+    // let orderDetail = new OrderDetail();
+    // orderDetail.user = this.ip.userDetails;
+    //
+    // orderDetail.cartItems = this.ip.cartItems;
+    // orderDetail.purchaseDate = new Date();
+    // console.log('#################################################');
+    // console.log(orderDetail);
+    // console.log('#################################################');
+    //
+    //
+    // const headers = new HttpHeaders(({Authorization: 'Basic ' + btoa('user' + ':' + 'password')}));
+    // this.http.post<any>(`${this.resourceBaseURL}` + 'orderDetails/addOrderDetails', orderDetail, {
+    //   observe: 'response',
+    //   headers
+    // }).subscribe(response => {
+    //   this.cartItems = response.body;
+    //   this.ip.setCartItems(this.cartItems);
+    //
+    // }, error => {
+    //   console.log(error);
+    //
+    //   alert('error 2');
+    // });
 
   }
 }
