@@ -9,6 +9,7 @@ import {ItemListComponent} from './components/item/item-list/item-list.component
 
 const routes: Routes = [
   {path: '', component: HomePageComponent},
+  {path: 'home', component: HomePageComponent},
   {path: 'sign_up', component: SignUpComponent},
   {path: 'sign_in', component: SignInComponent},
   {path: 'item', component: ItemComponent},

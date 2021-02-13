@@ -5,7 +5,9 @@
 export const environment = {
   production: false,
   resourceBaseURL: 'http://localhost:8080/',
-  chatServiceURL: 'http://localhost:5000/'
+  chatServiceURL: 'http://localhost:5000/',
+  projectName : 'Final Year Project',
+
 };
 
 /*
