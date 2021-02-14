@@ -35,9 +35,11 @@
         </div>
         <div class="col-md-6">
 
-          <select class=" col-md-4 btn btn-secondary dropdown-toggle" type="button" id="category" data-toggle="dropdown"
-                  aria-haspopup="true" aria-expanded="false" name="categories">
-            <option *ngFor="let category of categoriesList" value="category">{{category}}</option>
+          <select class=" col-md-4 btn btn-secondary " type="button" id="category" name="categories"
+                  (change)="categorySelect($event.target.value)">
+            <option *ngFor="let category of categoriesList" value={{category}} (change)="categorySelect(category)">
+              {{category}}
+            </option>
 
           </select>
         </div>
@@ -54,16 +56,9 @@
     <div class="form-group">
       <label for="discount">Discount</label>
       <input [(ngModel)]="item.discountPercentage" name="image" type="text" class="form-control"
-             id="discount" placeholder="price">
+             id="discount" placeholder="discount">
 
     </div>
-
-    <!--<div class="form-group">-->
-    <!--<label for="imgSrc">Image</label>-->
-    <!--<input [(ngModel)]="item.imgSrc" name="imgSrc" type="text" class="form-control"-->
-    <!--id="imgSrc" placeholder="image">-->
-
-    <!--</div>-->
 
 
     <div class="form-group">
@@ -74,10 +69,10 @@
         </div>
         <div class="col-md-6">
 
-          <select class=" col-md-4 btn btn-secondary dropdown-toggle" type="button" id="imgSrc" data-toggle="dropdown"
-                  aria-haspopup="true" aria-expanded="false" name="images">
-            <option *ngFor="let imagePath of itemImagePaths" value="path">
-              <app-image-selector [imgSrc]=imagePath> </app-image-selector>
+          <select class=" col-md-4 btn btn-secondary " type="button" id="imgSrc"
+                  name="images" (change)="selectImage($event.target.value)">
+            <option *ngFor="let imagePath of itemImagePaths" value={{imagePath}}>
+              <app-image-selector [imgSrc]=imagePath></app-image-selector>
             </option>
 
           </select>

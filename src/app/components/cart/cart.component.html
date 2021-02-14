@@ -49,17 +49,6 @@
           <h2 class="sidebar-title">Products</h2>
           <app-product-type1 *ngFor="let item of itemDetailsList" [item]=item></app-product-type1>
 
-          <!--<div class="thubmnail-recent">-->
-            <!--<img src="../../../assets/images/../../../assets/images/img/product-thumb-1.jpg" class="recent-thumb"-->
-                 <!--alt="">-->
-            <!--<h2><a href="single-product.html">Sony Smart TV - 2015</a></h2>-->
-            <!--<div class="product-sidebar-price">-->
-              <!--<ins>$700.00</ins>-->
-              <!--<del>$800.00</del>-->
-            <!--</div>-->
-          <!--</div>-->
-
-
 
           <!--<div class="thubmnail-recent">-->
           <!--<img src="../../../assets/images/img/product-thumb-1.jpg" class="recent-thumb" alt="">-->
@@ -70,22 +59,6 @@
           <!--</div>-->
           <!--</div>-->
 
-          <!--<div class="thubmnail-recent">-->
-          <!--<img src="../../../assets/images/img/product-thumb-1.jpg" class="recent-thumb" alt="">-->
-          <!--<h2><a href="single-product.html">Sony Smart TV - 2015</a></h2>-->
-          <!--<div class="product-sidebar-price">-->
-          <!--<ins>$700.00</ins>-->
-          <!--<del>$800.00</del>-->
-          <!--</div>-->
-          <!--</div>-->
-          <!--<div class="thubmnail-recent">-->
-          <!--<img src="../../../assets/images/img/product-thumb-1.jpg" class="recent-thumb" alt="">-->
-          <!--<h2><a href="single-product.html">Sony Smart TV - 2015</a></h2>-->
-          <!--<div class="product-sidebar-price">-->
-          <!--<ins>$700.00</ins>-->
-          <!--<del>$800.00</del>-->
-          <!--</div>-->
-          <!--</div>-->
         </div>
 
         <div class="single-sidebar">
@@ -116,7 +89,9 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr class="cart_item">
+
+
+                <tr *ngFor="let cartItem of cartItems" class="cart_item">
                   <td class="product-remove">
                     <a title="Remove this item" class="remove" href="#">×</a>
                   </td>
@@ -124,30 +99,32 @@
                   <td class="product-thumbnail">
                     <a href="single-product.html"><img width="145" height="145" alt="poster_1_up"
                                                        class="shop_thumbnail"
-                                                       src="../../../assets/images/img/product-thumb-2.jpg"></a>
+                                                       src="./assets/images/img/product-thumb-2.jpg"></a>
                   </td>
 
                   <td class="product-name">
-                    <a href="single-product.html">Ship Your Idea</a>
+                    <a href="single-product.html">{{cartItem.item.itemName}}</a>
                   </td>
 
                   <td class="product-price">
-                    <span class="amount">£15.00</span>
+                    <span class="amount">{{cartItem.item.price}}</span>
                   </td>
 
                   <td class="product-quantity">
                     <div class="quantity buttons_added">
                       <input type="button" class="minus" value="-">
-                      <input type="number" size="4" class="input-text qty text" title="Qty"
-                             value="1" min="0" step="1">
+                      <input #quantity type="number" size="4" class="input-text qty text" title="Qty"
+                             value={{cartItem.quantity}} min="0" step="1">
                       <input type="button" class="plus" value="+">
                     </div>
                   </td>
 
                   <td class="product-subtotal">
-                    <span class="amount">£15.00</span>
+                    <span class="amount">{{cartItem.item.price* cartItem.quantity}}</span>
                   </td>
                 </tr>
+
+
                 <tr>
                   <td class="actions" colspan="6">
                     <div class="row">
@@ -178,8 +155,13 @@
                       </div>
 
                       <div class="col-md-6">
-                        <input type="submit" value="Checkout" name="proceed"
-                               class="checkout-button button alt wc-forward">
+
+                        <button  type="submit" class="button" (click)="placeOrder()">Checkout</button>
+                        <!--<button type="submit" value="Checkout" name="proceed"-->
+                                <!--class="checkout-button button alt wc-forward" (click)="placeOrder()"></button>-->
+
+                        <!--<input type="submit" value="Checkout" name="proceed"-->
+                               <!--class="checkout-button button alt wc-forward">-->
                       </div>
                     </div>
 

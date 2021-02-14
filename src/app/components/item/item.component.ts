@@ -10,7 +10,6 @@ import {AppModule} from '../../app.module';
   styleUrls: ['./item.component.css']
 })
 export class ItemComponent implements OnInit {
-  // categoriesList = AppModule.itemCategories;
   categoriesList = [];
   itemImagePaths = [];
   item = new Item();
@@ -38,5 +37,14 @@ export class ItemComponent implements OnInit {
     }, error => {
       alert('error');
     });
+  }
+
+  categorySelect(category: any) {
+    this.item.category = category;
+
+  }
+
+  selectImage(imagePath: any) {
+    this.item.imgSrc = imagePath;
   }
 }

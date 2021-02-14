@@ -28,7 +28,7 @@
         </div>
         <div class="col-md-4">
           <select #gender class="form-control"
-                  (change)="selectGender(gender.value)">
+                  (change)="selectGender($event.target.value)">
             <option class="dropdown-item" value="MALE">Male</option>
             <option class="dropdown-item" value="FEMALE">Female</option>
           </select>

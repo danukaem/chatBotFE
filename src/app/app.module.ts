@@ -14,7 +14,7 @@ import {CartComponent} from './components/cart/cart.component';
 import {ItemListComponent} from './components/item/item-list/item-list.component';
 import {ShopItemComponent} from './components/item/item-list/shop-item/shop-item.component';
 import {ProductType1Component} from './components/cart/product-type1/product-type1.component';
-import { ImageSelectorComponent } from './components/image-selector/image-selector.component';
+import {ImageSelectorComponent} from './components/image-selector/image-selector.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +28,7 @@ import { ImageSelectorComponent } from './components/image-selector/image-select
     ItemListComponent,
     ShopItemComponent,
     ProductType1Component,
-    ImageSelectorComponent
+    ImageSelectorComponent,
   ],
   imports: [
     BrowserModule,
@@ -42,5 +42,7 @@ import { ImageSelectorComponent } from './components/image-selector/image-select
 })
 export class AppModule {
   static itemCategories = ['electronic', 'apparel', 'vehicleAndAccessories', 'machinery', 'homeAndGarden', 'beautyAndPersonalCare'];
-  static itemImagePaths = ['src/assets/images/homepage/1.png', 'src/assets/images/homepage/2.png', 'src/assets/images/homepage/3.png', 'src/assets/images/homepage/4.png', 'src/assets/images/homepage/5.png', 'src/assets/images/homepage/6.png', 'src/assets/images/homepage/7.png'];
+  static itemImagePaths = ['./assets/images/homepage/1.png', './assets/images/homepage/2.jpg', './assets/images/homepage/3.jpg',
+    './assets/images/homepage/4.jpg', './assets/images/homepage/5.jpg', './assets/images/homepage/6.jpg', './assets/images/homepage/7.jpg',
+    './assets/images/img/brand4.png', './assets/images/img/brand5.png', './assets/images/img/brand6.png', './assets/images/img/brand1.png'];
 }
