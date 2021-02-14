@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Item} from '../../model/Item';
-import { environment } from 'src/environments/environment';
+import {environment} from 'src/environments/environment';
+import {AppModule} from '../../app.module';
 
 @Component({
   selector: 'app-item',
@@ -9,7 +10,9 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./item.component.css']
 })
 export class ItemComponent implements OnInit {
-
+  // categoriesList = AppModule.itemCategories;
+  categoriesList = [];
+  itemImagePaths = [];
   item = new Item();
   resourceBaseURL: string;
 
@@ -18,6 +21,9 @@ export class ItemComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.categoriesList = AppModule.itemCategories;
+    this.itemImagePaths = AppModule.itemImagePaths;
+
   }
 
   saveItem() {

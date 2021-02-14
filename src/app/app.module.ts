@@ -12,8 +12,9 @@ import {ChatBotComponent} from './components/chat-bot/chat-bot.component';
 import {ItemComponent} from './components/item/item.component';
 import {CartComponent} from './components/cart/cart.component';
 import {ItemListComponent} from './components/item/item-list/item-list.component';
-import { ShopItemComponent } from './components/item/item-list/shop-item/shop-item.component';
-import { ProductType1Component } from './components/cart/product-type1/product-type1.component';
+import {ShopItemComponent} from './components/item/item-list/shop-item/shop-item.component';
+import {ProductType1Component} from './components/cart/product-type1/product-type1.component';
+import { ImageSelectorComponent } from './components/image-selector/image-selector.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { ProductType1Component } from './components/cart/product-type1/product-t
     CartComponent,
     ItemListComponent,
     ShopItemComponent,
-    ProductType1Component
+    ProductType1Component,
+    ImageSelectorComponent
   ],
   imports: [
     BrowserModule,
@@ -39,4 +41,6 @@ import { ProductType1Component } from './components/cart/product-type1/product-t
   bootstrap: [AppComponent]
 })
 export class AppModule {
+  static itemCategories = ['electronic', 'apparel', 'vehicleAndAccessories', 'machinery', 'homeAndGarden', 'beautyAndPersonalCare'];
+  static itemImagePaths = ['src/assets/images/homepage/1.png', 'src/assets/images/homepage/2.png', 'src/assets/images/homepage/3.png', 'src/assets/images/homepage/4.png', 'src/assets/images/homepage/5.png', 'src/assets/images/homepage/6.png', 'src/assets/images/homepage/7.png'];
 }

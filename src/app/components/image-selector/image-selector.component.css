@@ -1,0 +1,11 @@
+.recent-thumb {
+  float: left;
+  height: auto;
+  margin-right: 15px;
+  width: 63px;
+}
+
+.thubmnail-recent {
+  margin-bottom: 30px;
+  overflow: hidden;
+}

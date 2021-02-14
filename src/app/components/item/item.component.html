@@ -26,17 +26,69 @@
              id="description" placeholder="description">
     </div>
 
+
+    <div class="form-group">
+      <div class="row">
+        <div class="col-md-3">
+          <label for="category">Item Category</label>
+
+        </div>
+        <div class="col-md-6">
+
+          <select class=" col-md-4 btn btn-secondary dropdown-toggle" type="button" id="category" data-toggle="dropdown"
+                  aria-haspopup="true" aria-expanded="false" name="categories">
+            <option *ngFor="let category of categoriesList" value="category">{{category}}</option>
+
+          </select>
+        </div>
+
+      </div>
+    </div>
+
     <div class="form-group">
       <label for="price">Price</label>
       <input [(ngModel)]="item.price" name="price" type="text" class="form-control"
              id="price" placeholder="price">
     </div>
 
+    <div class="form-group">
+      <label for="discount">Discount</label>
+      <input [(ngModel)]="item.discountPercentage" name="image" type="text" class="form-control"
+             id="discount" placeholder="price">
+
+    </div>
+
+    <!--<div class="form-group">-->
+    <!--<label for="imgSrc">Image</label>-->
+    <!--<input [(ngModel)]="item.imgSrc" name="imgSrc" type="text" class="form-control"-->
+    <!--id="imgSrc" placeholder="image">-->
+
+    <!--</div>-->
+
+
+    <div class="form-group">
+      <div class="row">
+        <div class="col-md-3">
+          <label for="imgSrc">Image</label>
+
+        </div>
+        <div class="col-md-6">
+
+          <select class=" col-md-4 btn btn-secondary dropdown-toggle" type="button" id="imgSrc" data-toggle="dropdown"
+                  aria-haspopup="true" aria-expanded="false" name="images">
+            <option *ngFor="let imagePath of itemImagePaths" value="path">
+              <app-image-selector [imgSrc]=imagePath> </app-image-selector>
+            </option>
+
+          </select>
+        </div>
+
+      </div>
+    </div>
+
+
     <button type="submit" class="btn btn-primary" (click)="saveItem()">Submit</button>
-    <br>
-    <br>
-    <br>
-    <br>
+
   </form>
 
 </div>
