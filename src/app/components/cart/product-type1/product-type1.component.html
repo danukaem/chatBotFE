@@ -3,7 +3,7 @@
        alt="">
   <h2><a href="single-product.html">{{item.itemName}}</a></h2>
   <div class="product-sidebar-price">
-    <ins>{{item.itemDiscountedPrice}}</ins>
-    <del>{{item.itemActualPrice}}</del>
+    <ins>{{item.price*(100-item.discountPercentage)/100}}</ins>
+    <del>{{item.price}}</del>
   </div>
 </div>
