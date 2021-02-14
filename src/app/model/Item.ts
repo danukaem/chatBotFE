@@ -4,6 +4,8 @@ export class Item {
   public itemCode: string;
   public description: string;
   public price: number;
+  public discountPercentage: number;
+  imgSrc: string;
 
   constructor() {
 

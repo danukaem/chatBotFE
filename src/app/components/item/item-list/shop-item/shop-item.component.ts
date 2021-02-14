@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {Item} from '../../../../model/Item';
 
 @Component({
   selector: 'app-shop-item',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ShopItemComponent implements OnInit {
 
-  constructor() { }
+  @Input() item: Item;
+
+  constructor() {
+  }
 
   ngOnInit() {
   }
 
+  addToCartPress() {
+    alert('hello' + this.item.itemName);
+  }
 }

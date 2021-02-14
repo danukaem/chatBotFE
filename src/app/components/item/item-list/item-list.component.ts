@@ -12,7 +12,7 @@ import {environment} from 'src/environments/environment';
 })
 export class ItemListComponent implements OnInit {
 
-  items: Item[];
+  itemDetailsList: Item[] = [];
   resourceBaseURL: string;
 
   constructor(private http: HttpClient, private ipService: IpServiceService) {
@@ -20,6 +20,22 @@ export class ItemListComponent implements OnInit {
   }
 
   ngOnInit() {
+    const item1 = new Item();
+    item1.itemName = 'samsung s1';
+    item1.price = 250;
+    item1.discountPercentage = 50;
+    item1.imgSrc = '../../../../assets/images/img/product-1.jpg';
+    this.itemDetailsList.push(item1);
+
+    const item2 = new Item();
+    item2.itemName = 'samsung s2';
+    item2.price = 440;
+    item2.discountPercentage = 50;
+    item2.imgSrc = '../../../../assets/images/img/product-2.jpg';
+
+    this.itemDetailsList.push(item2);
+
+
     // const headers = new HttpHeaders(({Authorization: 'Basic ' + btoa('user' + ':' + 'password')}));
     //
     // this.http.get<any>(`${this.resourceBaseURL}` + 'item/getItemList', {
@@ -35,7 +51,7 @@ export class ItemListComponent implements OnInit {
 
 
   addToCart(item: Item, quantity) {
-    let cItem = new CartItem();
+    const cItem = new CartItem();
     cItem.item = item;
     cItem.quantity = quantity;
     cItem.userId = this.ipService.userId;
