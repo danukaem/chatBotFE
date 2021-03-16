@@ -6,6 +6,7 @@ import {OrderDetail} from '../../model/OrderDetail';
 import {environment} from 'src/environments/environment';
 import {Item} from '../../model/Item';
 import {UserDetails} from '../../model/UserDetail';
+import {forEach} from '@angular/router/src/utils/collection';
 
 @Component({
   selector: 'app-cart',
@@ -70,14 +71,9 @@ export class CartComponent implements OnInit {
         alert('error b');
       });
     }
-    // this.ip.getUserById(this.ip.userId);
   }
 
   placeOrder() {
-    console.log('this.ip.cartItems --------------------------------------------------')
-    console.log(this.ip.cartItems)
-    console.log('this.ip.cartItems --------------------------------------------------')
-    console.log(this.ip.userId)
 
     const orderDetail = new OrderDetail();
     orderDetail.user = this.ip.userDetails;
@@ -85,15 +81,23 @@ export class CartComponent implements OnInit {
     if (this.ip.userId !== undefined) {
       const user = new UserDetails();
       user.userId = this.ip.userId;
-      console.log(this.ip.userId)
       orderDetail.user = user;
     }
     orderDetail.cartItems = this.ip.cartItems;
-    orderDetail.purchaseDate = new Date();
-    console.log('#################################################');
-    console.log(orderDetail);
-    console.log('#################################################');
 
+    let totalAmount = 0;
+    this.ip.cartItems.forEach(cItm => {
+      totalAmount = totalAmount + (cItm.item.price * (100 - cItm.item.discountPercentage) / 100);
+      console.log('*******************cart item');
+      console.log(cItm)
+      console.log('*******************cart item');
+    })
+    console.log('total : ' + totalAmount);
+    orderDetail.orderAmount = totalAmount;
+    orderDetail.isPaid = 1;
+    orderDetail.purchaseDate = new Date();
+
+    console.log('orderDetail ---=========----------===== ', orderDetail)
 
     const headers = new HttpHeaders(({Authorization: 'Basic ' + btoa('user' + ':' + 'password')}));
     this.http.post<any>(`${this.resourceBaseURL}` + 'orderDetails/addOrderDetails', orderDetail, {
@@ -101,6 +105,7 @@ export class CartComponent implements OnInit {
       headers
     }).subscribe(response => {
       this.ip.setCartItems([]);
+      this.ip.setOrderId(response.body)
       alert('successfully checkout');
     }, error => {
       console.log(error);

@@ -8,6 +8,7 @@ export class OrderDetail {
   purchaseDate: Date;
   user: UserDetails;
   cartItems: CartItem[];
+  isPaid: any;
 
 
   constructor() {

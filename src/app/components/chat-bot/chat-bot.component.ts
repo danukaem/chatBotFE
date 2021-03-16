@@ -39,7 +39,7 @@ export class ChatBotComponent implements OnInit {
     console.log('this.userMessage ----- ' + this.userMessage)
     const headers = new HttpHeaders(({Authorization: 'Basic ' + btoa('user' + ':' + 'password')}));
 
-    this.http.get<any>(`${this.resourceBaseURL}` + 'chatMessage/chat?chatMessage=' + this.userMessage + '&chatSessionId=' + this.ipService.getSessionId()
+    this.http.get<any>(`${this.resourceBaseURL}` + 'chatMessage/chat?chatMessage=' + this.userMessage + '&chatSessionId=' + this.ipService.getIpAddress()
       + '&userId=' + (this.ipService.getUserId() === undefined ? '' : this.ipService.getUserId()) + '&ipAddress=' + (this.ipService.getIpAddress() === undefined ? '' : this.ipService.getIpAddress())
       + '&orderId=' + (this.ipService.getOrderId() === undefined ? '' : this.ipService.getOrderId()) + '&stateOfOrder=' + (this.ipService.getStateOfOrder() === undefined ? 'PENDING' : this.ipService.getStateOfOrder())
       + '&cartId=' + (this.ipService.getCartId() === undefined ? '' : this.ipService.getCartId()), {
