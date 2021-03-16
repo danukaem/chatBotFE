@@ -5,7 +5,8 @@
 }
 
 .chat-messages-float {
-  background: aquamarine;
+  z-index: 100;
+  background: #beddff;
   padding: 2%;
   position: fixed;
   bottom: 20%;

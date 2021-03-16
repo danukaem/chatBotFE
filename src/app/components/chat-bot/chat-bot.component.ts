@@ -25,16 +25,18 @@ export class ChatBotComponent implements OnInit {
     this.userMessage = '';
     this.robotMessage = 'Hey!, how can i help you?';
     this.isVisibleChat = false;
-    console.log('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa');
   }
 
 
   openChatBot() {
     this.isVisibleChat = !this.isVisibleChat;
+    console.log('isVisibleChat ----  ' + this.isVisibleChat);
+
   }
 
   sendMessage() {
 
+    console.log('this.userMessage ----- ' + this.userMessage)
     const headers = new HttpHeaders(({Authorization: 'Basic ' + btoa('user' + ':' + 'password')}));
 
     this.http.get<any>(`${this.resourceBaseURL}` + 'chatMessage/chat?chatMessage=' + this.userMessage + '&chatSessionId=' + this.ipService.getSessionId()

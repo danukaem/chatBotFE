@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {AppModule} from '../../app.module';
 import {UserDetails} from '../../model/UserDetail';
-import { environment } from 'src/environments/environment';
+import {environment} from 'src/environments/environment';
 
 @Component({
   selector: 'app-sign-up',
@@ -16,10 +16,11 @@ export class SignUpComponent implements OnInit {
 
   constructor(private http: HttpClient) {
     this.resourceBaseURL = environment.resourceBaseURL;
-    
+
   }
 
   ngOnInit() {
+    this.userDetails.gender = 'MALE';
   }
 
   signUp() {
@@ -40,7 +41,6 @@ export class SignUpComponent implements OnInit {
   }
 
   selectGender(value: string) {
-    alert(value);
     this.userDetails.gender = value;
   }
 }

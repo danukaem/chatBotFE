@@ -26,11 +26,14 @@ export class ShopItemComponent implements OnInit {
 
   addToCart(item: Item, quantity) {
     alert('hello world ' + item.itemName);
+    console.log('item ', item)
+    console.log('quantity ', quantity)
     const cItem = new CartItem();
     cItem.item = item;
     cItem.quantity = quantity;
     cItem.userId = this.ipService.userId;
     cItem.ipAddress = this.ipService.ipAddress;
+    console.log('cItem ', cItem)
     this.ipService.addToCart(cItem);
 
   }

@@ -1,7 +1,7 @@
 <div class="thubmnail-recent">
   <img src={{item.imgSrc}} class="recent-thumb"
        alt="">
-  <h2><a href="single-product.html">{{item.itemName}}</a></h2>
+  <h2><a routerLink="/itemList">{{item.itemName}}</a></h2>
   <div class="product-sidebar-price">
     <ins>{{item.price*(100-item.discountPercentage)/100}}</ins>
     <del>{{item.price}}</del>
