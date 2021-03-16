@@ -25,9 +25,9 @@ export class ShopItemComponent implements OnInit {
 
 
   addToCart(item: Item, quantity) {
-    alert('hello world ' + item.itemName);
-    console.log('item ', item)
-    console.log('quantity ', quantity)
+    // alert('Item added successfully');
+    // console.log('item ', item)
+    // console.log('quantity ', quantity)
     const cItem = new CartItem();
     cItem.item = item;
     cItem.quantity = quantity;

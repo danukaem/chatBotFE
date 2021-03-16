@@ -33,8 +33,8 @@ export class SignInComponent implements OnInit {
       } else {
         alert('login success');
 
-        this.ipService.setUserName(response.body.userName)
-        this.ipService.setUserId(response.body.userId)
+        this.ipService.setUserName(response.body.userName);
+        this.ipService.setUserId(response.body.userId);
       }
 
     }, error => {

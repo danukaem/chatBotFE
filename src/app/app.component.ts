@@ -10,6 +10,7 @@ import {environment} from '../environments/environment';
 })
 export class AppComponent implements OnInit {
   projectName: string;
+  userName: string;
 
   constructor(private http: HttpClient, private ip: IpServiceService) {
     this.projectName = environment.projectName;
@@ -19,6 +20,7 @@ export class AppComponent implements OnInit {
     this.ip.changeIpAddress(this.ip.makeRandom());
     this.ip.setCategoryList();
 
+    this.userName = this.ip.userName;
   }
 
 

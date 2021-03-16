@@ -58,13 +58,17 @@ export class IpServiceService {
   }
 
   public addToCart(cartItem: CartItem) {
-    this.cartItems.push(cartItem);
+    if (this.cartItems !== null) {
+      this.cartItems.push(cartItem);
+    }
     const headers = new HttpHeaders(({Authorization: 'Basic ' + btoa('user' + ':' + 'password')}));
 
     this.http.post<any>(`${this.resourceBaseURL}` + 'cartItem/addCartItems', this.cartItems, {
       observe: 'response',
       headers
     }).subscribe(response => {
+      alert('Item added successfully');
+      this.cartItems.pop();
       // this.items = response.body;
     }, error => {
       console.log(error);
@@ -79,6 +83,11 @@ export class IpServiceService {
 
   public setCartItems(cartItems: CartItem[]): CartItem[] {
     this.cartItems = cartItems;
+    return this.cartItems;
+  }
+
+  public addCartItems(cartItems: CartItem[]): CartItem[] {
+    this.cartItems.push(cartItems);
     return this.cartItems;
   }
 

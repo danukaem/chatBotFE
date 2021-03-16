@@ -5,6 +5,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {OrderDetail} from '../../model/OrderDetail';
 import {environment} from 'src/environments/environment';
 import {Item} from '../../model/Item';
+import {UserDetails} from '../../model/UserDetail';
 
 @Component({
   selector: 'app-cart',
@@ -43,7 +44,10 @@ export class CartComponent implements OnInit {
       }).subscribe(response => {
         console.log(response.body);
         this.cartItems = response.body;
-        this.ip.setCartItems(this.cartItems);
+        if (response.body !== null) {
+          this.ip.setCartItems(this.cartItems);
+
+        }
       }, error => {
         console.log(error);
         alert('error a');
@@ -56,8 +60,10 @@ export class CartComponent implements OnInit {
       }).subscribe(response => {
         console.log(response.body);
         this.cartItems = response.body;
-        this.ip.setCartItems(this.cartItems);
+        if (response.body !== null) {
+          this.ip.setCartItems(this.cartItems);
 
+        }
       }, error => {
         console.log(error);
 
@@ -68,12 +74,20 @@ export class CartComponent implements OnInit {
   }
 
   placeOrder() {
+    console.log('this.ip.cartItems --------------------------------------------------')
     console.log(this.ip.cartItems)
+    console.log('this.ip.cartItems --------------------------------------------------')
     console.log(this.ip.userId)
 
     const orderDetail = new OrderDetail();
     orderDetail.user = this.ip.userDetails;
 
+    if (this.ip.userId !== undefined) {
+      const user = new UserDetails();
+      user.userId = this.ip.userId;
+      console.log(this.ip.userId)
+      orderDetail.user = user;
+    }
     orderDetail.cartItems = this.ip.cartItems;
     orderDetail.purchaseDate = new Date();
     console.log('#################################################');
@@ -86,9 +100,8 @@ export class CartComponent implements OnInit {
       observe: 'response',
       headers
     }).subscribe(response => {
-      this.cartItems = response.body;
-      this.ip.setCartItems(this.cartItems);
-
+      this.ip.setCartItems([]);
+      alert('successfully checkout');
     }, error => {
       console.log(error);
 
