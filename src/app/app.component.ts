@@ -9,7 +9,6 @@ import {environment} from '../environments/environment';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  ipAddress: string;
   projectName: string;
 
   constructor(private http: HttpClient, private ip: IpServiceService) {
@@ -17,15 +16,9 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.ip.getIp().subscribe((response: any) => {
-      this.ip.ipAddress = response.ip;
-      this.ipAddress = this.ip.ipAddress;
+    this.ip.changeIpAddress(this.ip.makeRandom());
+    this.ip.setCategoryList();
 
-      // let sessionId = this.ipAddress;
-      // sessionId = sessionId.replaceAll('.', '') + Date.now();
-      // this.ip.setSessionId(sessionId);
-
-    });
   }
 
 

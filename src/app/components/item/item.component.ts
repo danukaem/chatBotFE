@@ -3,6 +3,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Item} from '../../model/Item';
 import {environment} from 'src/environments/environment';
 import {AppModule} from '../../app.module';
+import {IpServiceService} from '../../ip-service.service';
 
 @Component({
   selector: 'app-item',
@@ -15,13 +16,16 @@ export class ItemComponent implements OnInit {
   item = new Item();
   resourceBaseURL: string;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private ipService: IpServiceService) {
     this.resourceBaseURL = environment.resourceBaseURL;
   }
 
   ngOnInit() {
-    this.categoriesList = AppModule.itemCategories;
+    this.ipService.setCategoryList();
+    this.categoriesList = this.ipService.itemCategories;
     this.itemImagePaths = AppModule.itemImagePaths;
+    this.item.category = this.categoriesList[0];
+    this.item.imgSrc = this.itemImagePaths[0];
 
   }
 

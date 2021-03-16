@@ -19,6 +19,7 @@ export class IpServiceService {
   stateOfOrder: string;
   cartId: string;
   orderId: string;
+  itemCategories: string[] = [];
 
   constructor(private http: HttpClient) {
     this.resourceBaseURL = environment.resourceBaseURL;
@@ -104,6 +105,20 @@ export class IpServiceService {
     return userDetails;
   }
 
+  public setCategoryList() {
+    const headers = new HttpHeaders(({Authorization: 'Basic ' + btoa('user' + ':' + 'password')}));
+
+    this.http.get<any>(`${this.resourceBaseURL}` + 'item/getCategoryList', {
+      observe: 'response',
+      headers
+    }).subscribe(response => {
+      this.itemCategories = response.body;
+    }, error => {
+      console.log(error);
+
+    });
+  }
+
   public setSessionId(sessionId: string) {
     this.sessionId = sessionId;
   }
@@ -143,5 +158,17 @@ export class IpServiceService {
 
     return this.orderId;
   }
+
+
+  public makeRandom(): string {
+    const possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
+    const lengthOfCode = 80;
+    let text = '';
+    for (let i = 0; i < lengthOfCode; i++) {
+      text += possible.charAt(Math.floor(Math.random() * possible.length));
+    }
+    return text;
+  }
+
 
 }

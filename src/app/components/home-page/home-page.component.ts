@@ -3,6 +3,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {UserDetails} from '../../model/UserDetail';
 import {environment} from 'src/environments/environment';
 import * as $ from '../../../../node_modules/jquery';
+import {IpServiceService} from '../../ip-service.service';
 
 
 @Component({
@@ -14,7 +15,7 @@ export class HomePageComponent implements OnInit {
   userList: UserDetails[];
   resourceBaseURL: string;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, public  ipService: IpServiceService) {
     this.resourceBaseURL = environment.resourceBaseURL;
   }
 

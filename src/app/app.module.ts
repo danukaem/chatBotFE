@@ -41,7 +41,6 @@ import {ImageSelectorComponent} from './components/image-selector/image-selector
   bootstrap: [AppComponent]
 })
 export class AppModule {
-  static itemCategories = ['electronic', 'apparel', 'vehicleAndAccessories', 'machinery', 'homeAndGarden', 'beautyAndPersonalCare'];
   static itemImagePaths = ['./assets/images/homepage/1.png', './assets/images/homepage/2.jpg', './assets/images/homepage/3.jpg',
     './assets/images/homepage/4.jpg', './assets/images/homepage/5.jpg', './assets/images/homepage/6.jpg', './assets/images/homepage/7.jpg',
     './assets/images/img/brand4.png', './assets/images/img/brand5.png', './assets/images/img/brand6.png', './assets/images/img/brand1.png'];
