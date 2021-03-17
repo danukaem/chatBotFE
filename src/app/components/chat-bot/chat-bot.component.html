@@ -21,9 +21,10 @@
       </label>&nbsp;&nbsp;
       <label>{{robotMessage}}</label>
       <br>
-      <input [(ngModel)]="userMessage" name="userName" type="text" class="form-control" placeholder="type message">
+      <!--<input [(ngModel)]="userMessage" name="userName" type="text" class="form-control" placeholder="type message" (keyup)="pressEnter($event)">-->
+      <input  id="userMessageInput" name="userName" type="text" class="form-control" placeholder="type message" #msg (keyup)="pressEnter($event,msg.value)">
       <br>
-      <button class="btn btn-primary" (click)="sendMessage()">enter</button>
+      <button class="btn btn-primary" (click)="sendMessage($event,msg.value)">enter</button>
     </div>
   </div>
 

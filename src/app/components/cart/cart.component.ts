@@ -6,7 +6,6 @@ import {OrderDetail} from '../../model/OrderDetail';
 import {environment} from 'src/environments/environment';
 import {Item} from '../../model/Item';
 import {UserDetails} from '../../model/UserDetail';
-import {forEach} from '@angular/router/src/utils/collection';
 
 @Component({
   selector: 'app-cart',
@@ -53,8 +52,7 @@ export class CartComponent implements OnInit {
         console.log(error);
         alert('error a');
       });
-    }
-    else {
+    } else {
       this.http.get<any>(`${this.resourceBaseURL}` + 'cartItem/getCartItemListByIp/' + this.ip.ipAddress, {
         observe: 'response',
         headers
