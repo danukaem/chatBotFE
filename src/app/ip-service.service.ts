@@ -25,6 +25,13 @@ export class IpServiceService {
     this.resourceBaseURL = environment.resourceBaseURL;
   }
 
+
+  loadUserNameAndUserId() {
+    this.setUserName(localStorage.getItem('userName'));
+    this.setUserId(localStorage.getItem('userId'));
+
+  }
+
   public getIp() {
     return this.http.get('http://api.ipify.org/?format=json');
 
@@ -42,14 +49,25 @@ export class IpServiceService {
   }
 
   public setUserName(userName: string) {
+    if (userName !== null) {
+      localStorage.setItem('userName', userName);
+    }
     this.userName = userName;
   }
 
   public getUserName(): string {
+    console.log(localStorage.getItem('userNameaaa'))
+
+    if (localStorage.getItem('userNamea') !== null) {
+      this.userName = localStorage.getItem('userNamea');
+    }
     return this.userName;
   }
 
   public setUserId(userId: string) {
+    if (userId !== null) {
+      localStorage.setItem('userId', userId);
+    }
     this.userId = userId;
   }
 
@@ -86,7 +104,7 @@ export class IpServiceService {
     return this.cartItems;
   }
 
-   // public removeFromCart(cartItem: CartItem) {
+  // public removeFromCart(cartItem: CartItem) {
   //   this.cartItems.pop(cartItem);
   // }
 

@@ -144,7 +144,9 @@ export class CartComponent implements OnInit {
       observe: 'response',
       headers
     }).subscribe(response => {
-      this.ip.cartItems.pop(cartItem)
+      // this.ip.cartItems.pop(cartItem);
+      this.ip.cartItems.splice(this.ip.cartItems.indexOf(cartItem), 1);
+
       this.ip.setCartItems(this.ip.cartItems);
       this.ip.setOrderId(response.body)
       alert('successfully removed');

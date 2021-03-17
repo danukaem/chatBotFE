@@ -1908,3 +1908,7 @@ div.cart-collaterals ul.products li.product:hover .add_to_cart_button {
 
 }
 
+.signOut_lbl{
+  margin: 1%;
+  /*margin: 10px;*/
+}

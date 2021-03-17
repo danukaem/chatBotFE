@@ -21,7 +21,16 @@ export class AppComponent implements OnInit {
     this.ip.setCategoryList();
 
     this.userName = this.ip.userName;
+    this.ip.loadUserNameAndUserId();
+    this.userName = this.ip.getUserName();
+
   }
 
 
+  signOut() {
+    localStorage.clear();
+    this.userName = this.ip.getUserName();
+    location.reload();
+
+  }
 }
