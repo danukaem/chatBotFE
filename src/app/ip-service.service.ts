@@ -86,12 +86,7 @@ export class IpServiceService {
     return this.cartItems;
   }
 
-  public addCartItems(cartItems: CartItem[]): CartItem[] {
-    this.cartItems.push(cartItems);
-    return this.cartItems;
-  }
-
-  // public removeFromCart(cartItem: CartItem) {
+   // public removeFromCart(cartItem: CartItem) {
   //   this.cartItems.pop(cartItem);
   // }
 

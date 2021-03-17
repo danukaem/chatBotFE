@@ -9,6 +9,8 @@ export class OrderDetail {
   user: UserDetails;
   cartItems: CartItem[];
   isPaid: any;
+  stateOfOrder: any;
+  // PAID, CANCELED,PENDING
 
 
   constructor() {

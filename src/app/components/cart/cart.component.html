@@ -93,7 +93,7 @@
 
                 <tr *ngFor="let cartItem of cartItems" class="cart_item">
                   <td class="product-remove">
-                    <a title="Remove this item" class="remove" href="#">×</a>
+                    <a title="Remove this item" class="remove" (click)="removeCartItem(cartItem)">×</a>
                   </td>
 
                   <td class="product-thumbnail">
