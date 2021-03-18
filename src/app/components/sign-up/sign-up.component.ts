@@ -1,8 +1,9 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {AppModule} from '../../app.module';
 import {UserDetails} from '../../model/UserDetail';
 import {environment} from 'src/environments/environment';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-sign-up',
@@ -11,10 +12,16 @@ import {environment} from 'src/environments/environment';
 })
 export class SignUpComponent implements OnInit {
 
+  @ViewChild('uName') uName;
+  @ViewChild('eml') eml;
+  @ViewChild('pswd') pswd;
+  @ViewChild('bdy') bdy;
+  @ViewChild('cntry') cntry;
+  @ViewChild('cty') cty;
   userDetails = new UserDetails();
   resourceBaseURL: string;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private router: Router) {
     this.resourceBaseURL = environment.resourceBaseURL;
 
   }
@@ -31,8 +38,10 @@ export class SignUpComponent implements OnInit {
       observe: 'response',
       headers
     }).subscribe(response => {
+      this.clearText();
       alert('success');
-      console.log(response.body);
+      this.router.navigate(['/sign_in']);
+
     }, error => {
       alert('error');
     });
@@ -43,4 +52,15 @@ export class SignUpComponent implements OnInit {
   selectGender(value: string) {
     this.userDetails.gender = value;
   }
+
+  clearText() {
+    this.uName.nativeElement.value = ' ';
+    this.eml.nativeElement.value = ' ';
+    this.pswd.nativeElement.value = ' ';
+    this.bdy.nativeElement.value = ' ';
+    this.cntry.nativeElement.value = ' ';
+    this.cty.nativeElement.value = ' ';
+
+  }
+
 }

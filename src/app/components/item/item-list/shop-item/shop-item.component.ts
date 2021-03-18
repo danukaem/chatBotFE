@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import {Item} from '../../../../model/Item';
 import {CartItem} from '../../../../model/CartItem';
 import {environment} from '../../../../../environments/environment';
@@ -15,6 +15,7 @@ export class ShopItemComponent implements OnInit {
   @Input() item: Item;
   resourceBaseURL: string;
 
+  @ViewChild('qty') qty;
 
   constructor(private http: HttpClient, private ipService: IpServiceService) {
     this.resourceBaseURL = environment.resourceBaseURL;
@@ -36,5 +37,6 @@ export class ShopItemComponent implements OnInit {
     console.log('cItem ', cItem)
     this.ipService.addToCart(cItem);
 
+    this.qty.nativeElement.value = '';
   }
 }

@@ -4,20 +4,20 @@
   <form>
     <div class="form-group">
       <label for="userName">User Name</label>
-      <input [(ngModel)]="userDetails.userName" name="userName" type="text" class="form-control" id="userName"
+      <input #uName [(ngModel)]="userDetails.userName" name="userName" type="text" class="form-control" id="userName"
              placeholder="user name">
     </div>
 
     <div class="form-group">
       <label for="exampleInputEmail1">Email address</label>
-      <input [(ngModel)]="userDetails.email" name="email" type="email" class="form-control" id="exampleInputEmail1"
+      <input #eml  [(ngModel)]="userDetails.email" name="email" type="email" class="form-control" id="exampleInputEmail1"
              aria-describedby="emailHelp"
              placeholder="Enter email">
       <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
     </div>
     <div class="form-group">
       <label for="exampleInputPassword1">Password</label>
-      <input [(ngModel)]="userDetails.password" name="password" type="password" class="form-control"
+      <input #pswd  [(ngModel)]="userDetails.password" name="password" type="password" class="form-control"
              id="exampleInputPassword1" placeholder="Password">
     </div>
     <div class="form-group">
@@ -40,17 +40,17 @@
     </div>
     <div class="form-group">
       <label for="exampleInputBirthDay1">Birth Day</label>
-      <input [(ngModel)]="userDetails.birthDay" name="birthDay" type="date" class="form-control"
+      <input #bdy  [(ngModel)]="userDetails.birthDay" name="birthDay" type="date" class="form-control"
              id="exampleInputBirthDay1" placeholder="Birth Day">
     </div>
     <div class="form-group">
       <label for="Country">Country</label>
-      <input [(ngModel)]="userDetails.country" name="country" type="text" class="form-control" id="Country"
+      <input #cntry  [(ngModel)]="userDetails.country" name="country" type="text" class="form-control" id="Country"
              placeholder="Country">
     </div>
     <div class="form-group">
       <label for="city">city</label>
-      <input [(ngModel)]="userDetails.city" name="city" type="text" class="form-control" id="city" placeholder="city">
+      <input #cty  [(ngModel)]="userDetails.city" name="city" type="text" class="form-control" id="city" placeholder="city">
     </div>
     <button type="submit" class="btn btn-primary" (click)="signUp()">Submit</button>
     <br>

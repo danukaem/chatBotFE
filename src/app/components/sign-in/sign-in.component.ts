@@ -3,7 +3,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {IpServiceService} from '../../ip-service.service';
 import {UserDetails} from '../../model/UserDetail';
 import {environment} from 'src/environments/environment';
-import {Router} from '@angular/router'
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-sign-in',
