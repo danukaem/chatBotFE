@@ -37,7 +37,7 @@ export class CartComponent implements OnInit {
     });
 
 
-    if (this.ip.userId !== undefined) {
+    if (this.ip.userId !== undefined && this.ip.userId !== null) {
       this.http.get<any>(`${this.resourceBaseURL}` + 'cartItem/getCartItemListByUserId/' + this.ip.userId, {
         observe: 'response',
         headers
@@ -50,7 +50,7 @@ export class CartComponent implements OnInit {
         }
       }, error => {
         console.log(error);
-        alert('error a');
+        alert('error aaaaaaaaaaaaaa');
       });
     } else {
       this.http.get<any>(`${this.resourceBaseURL}` + 'cartItem/getCartItemListByIp/' + this.ip.ipAddress, {
@@ -76,7 +76,7 @@ export class CartComponent implements OnInit {
     const orderDetail = new OrderDetail();
     orderDetail.user = this.ip.userDetails;
 
-    if (this.ip.userId !== undefined) {
+    if (this.ip.userId !== undefined && this.ip.userId !== null) {
       const user = new UserDetails();
       user.userId = this.ip.userId;
       orderDetail.user = user;
@@ -122,7 +122,7 @@ export class CartComponent implements OnInit {
   removeCartItem(cartItem: CartItem) {
     const orderDetail = new OrderDetail();
     orderDetail.user = this.ip.userDetails;
-    if (this.ip.userId !== undefined) {
+    if (this.ip.userId !== undefined && this.ip.userId !== null) {
       const user = new UserDetails();
       user.userId = this.ip.userId;
       orderDetail.user = user;
