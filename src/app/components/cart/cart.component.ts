@@ -38,6 +38,7 @@ export class CartComponent implements OnInit {
 
 
     if (this.ip.userId !== undefined && this.ip.userId !== null) {
+      // get cart items
       this.http.get<any>(`${this.resourceBaseURL}` + 'cartItem/getCartItemListByUserId/' + this.ip.userId, {
         observe: 'response',
         headers
@@ -50,8 +51,27 @@ export class CartComponent implements OnInit {
         }
       }, error => {
         console.log(error);
-        alert('error aaaaaaaaaaaaaa');
+        alert('error ');
       });
+
+      // get recommended items
+
+      this.http.get<any>(`${this.resourceBaseURL}` + 'cartItem/getRecommendCartItemListByUserId/' + this.ip.userId, {
+        observe: 'response',
+        headers
+      }).subscribe(response => {
+        console.log(response.body);
+        this.cartItems = response.body;
+        if (response.body !== null) {
+          this.ip.setCartItems(this.cartItems);
+
+        }
+      }, error => {
+        console.log(error);
+        alert('error ');
+      });
+
+
     } else {
       this.http.get<any>(`${this.resourceBaseURL}` + 'cartItem/getCartItemListByIp/' + this.ip.ipAddress, {
         observe: 'response',
@@ -66,7 +86,7 @@ export class CartComponent implements OnInit {
       }, error => {
         console.log(error);
 
-        alert('error b');
+        alert('error ');
       });
     }
   }
