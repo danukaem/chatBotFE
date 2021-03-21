@@ -54,22 +54,14 @@ export class CartComponent implements OnInit {
         alert('error ');
       });
 
-      // get recommended items
 
-      this.http.get<any>(`${this.resourceBaseURL}` + 'cartItem/getRecommendCartItemListByUserId/' + this.ip.userId, {
-        observe: 'response',
-        headers
-      }).subscribe(response => {
-        console.log(response.body);
-        this.cartItems = response.body;
-        if (response.body !== null) {
-          this.ip.setCartItems(this.cartItems);
-
-        }
-      }, error => {
-        console.log(error);
-        alert('error ');
-      });
+      this.ip.getRecommendItemList()
+        .subscribe(response => {
+          this.ip.recommendedItemsList = response.body;
+        }, error => {
+          console.log(error);
+          alert('error ');
+        });
 
 
     } else {

@@ -46,11 +46,18 @@ export class ChatBotComponent implements OnInit {
         observe: 'response',
         headers
       }).subscribe(response => {
-        if (response.body.userMessage == null) {
+        if (response.body.robotMessage == null) {
           alert('message null');
         } else {
-          this.robotMessage = response.body.userMessage;
+          this.robotMessage = response.body.robotMessage;
           this.msg.nativeElement.value = '';
+          this.ipService.getRecommendItemList()
+            .subscribe(responseItem => {
+              this.ipService.recommendedItemsList = responseItem.body;
+            }, error => {
+              console.log(error);
+              alert('error ');
+            });
 
         }
       }, error => {

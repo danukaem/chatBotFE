@@ -3,6 +3,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {CartItem} from './model/CartItem';
 import {UserDetails} from './model/UserDetail';
 import {environment} from 'src/environments/environment';
+import {Item} from './model/Item';
 
 @Injectable({
   providedIn: 'root'
@@ -20,6 +21,7 @@ export class IpServiceService {
   cartId: string;
   orderId: string;
   itemCategories: string[] = [];
+  recommendedItemsList: Item[] = [];
 
   constructor(private http: HttpClient) {
     this.resourceBaseURL = environment.resourceBaseURL;
@@ -139,6 +141,22 @@ export class IpServiceService {
       console.log(error);
 
     });
+  }
+
+
+  public getRecommendItemList() {
+    const headers = new HttpHeaders(({Authorization: 'Basic ' + btoa('user' + ':' + 'password')}));
+
+    return this.http.get<any>(`${this.resourceBaseURL}` + 'cartItem/getRecommendCartItemListByUserId/' + this.userId, {
+      observe: 'response',
+      headers
+    });
+    // .subscribe(response => {
+    //   this.recommendedItemsList = response.body;
+    // }, error => {
+    //   console.log(error);
+    //   alert('error ');
+    // });
   }
 
   public setSessionId(sessionId: string) {
