@@ -19,7 +19,7 @@ export class CartComponent implements OnInit {
   itemDetailsList: Item[] = [];
 
 
-  constructor(private ip: IpServiceService, private http: HttpClient) {
+  constructor(public ip: IpServiceService, private http: HttpClient) {
     this.resourceBaseURL = environment.resourceBaseURL;
   }
 
@@ -80,6 +80,15 @@ export class CartComponent implements OnInit {
 
         alert('error ');
       });
+
+      this.ip.getRecommendItemListByIpAddress()
+        .subscribe(response => {
+          this.ip.recommendedItemsList = response.body;
+        }, error => {
+          console.log(error);
+          alert('error ');
+        });
+
     }
   }
 

@@ -151,12 +151,15 @@ export class IpServiceService {
       observe: 'response',
       headers
     });
-    // .subscribe(response => {
-    //   this.recommendedItemsList = response.body;
-    // }, error => {
-    //   console.log(error);
-    //   alert('error ');
-    // });
+  }
+
+  public getRecommendItemListByIpAddress() {
+    const headers = new HttpHeaders(({Authorization: 'Basic ' + btoa('user' + ':' + 'password')}));
+
+    return this.http.get<any>(`${this.resourceBaseURL}` + 'cartItem/getRecommendCartItemListByIpAddress/' + this.ipAddress, {
+      observe: 'response',
+      headers
+    });
   }
 
   public setSessionId(sessionId: string) {

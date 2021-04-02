@@ -51,13 +51,23 @@ export class ChatBotComponent implements OnInit {
         } else {
           this.robotMessage = response.body.robotMessage;
           this.msg.nativeElement.value = '';
-          this.ipService.getRecommendItemList()
-            .subscribe(responseItem => {
-              this.ipService.recommendedItemsList = responseItem.body;
-            }, error => {
-              console.log(error);
-              alert('error ');
-            });
+          if (this.ipService.userId !== undefined && this.ipService.userId !== null) {
+            this.ipService.getRecommendItemList()
+              .subscribe(responseItem => {
+                this.ipService.recommendedItemsList = responseItem.body;
+              }, error => {
+                console.log(error);
+                alert('error ');
+              });
+          } else {
+            this.ipService.getRecommendItemListByIpAddress()
+              .subscribe(responseItem => {
+                this.ipService.recommendedItemsList = responseItem.body;
+              }, error => {
+                console.log(error);
+                alert('error ');
+              });
+          }
 
         }
       }, error => {
