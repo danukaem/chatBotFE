@@ -1,4 +1,6 @@
-
+#map-div iframe{
+  width: 100%;
+}
 .router-outlet-div{
   display: inline-block;
   width: 100%;

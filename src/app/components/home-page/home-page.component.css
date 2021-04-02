@@ -147,13 +147,30 @@ h1, h2, h3, h4, h5, h6, p, ul, ol {
 
   padding: 10px;
   /*height: 500px;*/
-  width:  100%;
+  width: 100%;
 }
 
-img{
+img {
   height: 450px;
 }
 
-.slider-font-background{
+.slider-font-background {
   color: black;
+}
+
+@media screen and (max-width: 992px) {
+
+  .carousel-item img {
+
+    height: 200px;
+  }
+
+}
+@media screen and (max-width: 668px) {
+
+  .carousel-item img {
+
+    height: 150px;
+  }
+
 }
