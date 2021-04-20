@@ -4,6 +4,7 @@ import {UserDetails} from '../../model/UserDetail';
 import {environment} from 'src/environments/environment';
 import * as $ from '../../../../node_modules/jquery';
 import {IpServiceService} from '../../ip-service.service';
+import {Item} from '../../model/Item';
 
 
 @Component({
@@ -14,8 +15,9 @@ import {IpServiceService} from '../../ip-service.service';
 export class HomePageComponent implements OnInit {
   userList: UserDetails[];
   resourceBaseURL: string;
+  recommendedItemsList: Item[] = [];
 
-  constructor(private http: HttpClient, public  ipService: IpServiceService) {
+  constructor(private http: HttpClient, public  ip: IpServiceService) {
     this.resourceBaseURL = environment.resourceBaseURL;
   }
 
@@ -34,6 +36,28 @@ export class HomePageComponent implements OnInit {
       $('.sidebar').toggleClass('fliph');
     });
 
+    // setTimeout(() => {
+    //   console.log('session id : ', this.ip.ipAddress)
+
+
+    if (this.ip.ipAddress != null) {
+      this.ip.getRecommendItemListByIpAddress()
+        .subscribe(response => {
+          this.ip.recommendedItemsList = response.body;
+        }, error => {
+          console.log(error);
+          alert('error ');
+        });
+    } else {
+      this.ip.getRecommendItemList()
+        .subscribe(response => {
+          this.ip.recommendedItemsList = response.body;
+        }, error => {
+          console.log(error);
+          alert('error ');
+        });
+    }
+    // }, 1000);
 
   }
 

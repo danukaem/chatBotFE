@@ -1,28 +1,28 @@
 <div class="container" style="background-color: #222222">
   <div class="row">
     <!--<div class="col-md-3">-->
-      <!--<button id="sidebar-div"><i class="fa fa-toggle-on" aria-hidden="true"></i></button>-->
-      <!--<div class="sidebar left ">-->
-        <!--<ul class="list-sidebar bg-defoult">-->
-          <!--<li><a href="#"><i class="fa fa-diamond"></i> <span class="nav-label">Consumer electronics</span></a></li>-->
-          <!--<li><a href="#"><i class="fa fa-diamond"></i> <span class="nav-label">Apparel</span></a></li>-->
-          <!--<li><a href="#"><i class="fa fa-diamond"></i> <span class="nav-label">Vehicles & Accessories</span></a></li>-->
-          <!--<li><a href="#"><i class="fa fa-diamond"></i> <span class="nav-label">Sport & Entertainment</span></a></li>-->
-          <!--<li><a href="#"><i class="fa fa-diamond"></i> <span class="nav-label">Machinery</span></a></li>-->
-          <!--<li><a href="#"><i class="fa fa-diamond"></i> <span class="nav-label">Home & Garden</span></a></li>-->
-          <!--<li><a href="#"><i class="fa fa-diamond"></i> <span class="nav-label">Beauty & Personal Care</span></a></li>-->
-          <!--<li><a href="#"><i class="fa fa-diamond"></i> <span class="nav-label">All categories</span></a></li>-->
-          <!--<li><a href="#" data-toggle="collapse" data-target="#products" class="collapsed active"> <i-->
-            <!--class="fa fa-bar-chart-o"></i> <span class="nav-label">Item</span> <span-->
-            <!--class="fa fa-chevron-down pull-right"></span> </a>-->
-            <!--<ul class="sub-menu collapse" id="products">-->
-              <!--<li class="active"><a href="#">Add Items</a></li>-->
-              <!--<li><a href="#">View Items</a></li>-->
-            <!--</ul>-->
-          <!--</li>-->
-          <!--<li><a href="#"><i class="fa fa-files-o"></i> <span class="nav-label">Cart</span></a></li>-->
-        <!--</ul>-->
-      <!--</div>-->
+    <!--<button id="sidebar-div"><i class="fa fa-toggle-on" aria-hidden="true"></i></button>-->
+    <!--<div class="sidebar left ">-->
+    <!--<ul class="list-sidebar bg-defoult">-->
+    <!--<li><a href="#"><i class="fa fa-diamond"></i> <span class="nav-label">Consumer electronics</span></a></li>-->
+    <!--<li><a href="#"><i class="fa fa-diamond"></i> <span class="nav-label">Apparel</span></a></li>-->
+    <!--<li><a href="#"><i class="fa fa-diamond"></i> <span class="nav-label">Vehicles & Accessories</span></a></li>-->
+    <!--<li><a href="#"><i class="fa fa-diamond"></i> <span class="nav-label">Sport & Entertainment</span></a></li>-->
+    <!--<li><a href="#"><i class="fa fa-diamond"></i> <span class="nav-label">Machinery</span></a></li>-->
+    <!--<li><a href="#"><i class="fa fa-diamond"></i> <span class="nav-label">Home & Garden</span></a></li>-->
+    <!--<li><a href="#"><i class="fa fa-diamond"></i> <span class="nav-label">Beauty & Personal Care</span></a></li>-->
+    <!--<li><a href="#"><i class="fa fa-diamond"></i> <span class="nav-label">All categories</span></a></li>-->
+    <!--<li><a href="#" data-toggle="collapse" data-target="#products" class="collapsed active"> <i-->
+    <!--class="fa fa-bar-chart-o"></i> <span class="nav-label">Item</span> <span-->
+    <!--class="fa fa-chevron-down pull-right"></span> </a>-->
+    <!--<ul class="sub-menu collapse" id="products">-->
+    <!--<li class="active"><a href="#">Add Items</a></li>-->
+    <!--<li><a href="#">View Items</a></li>-->
+    <!--</ul>-->
+    <!--</li>-->
+    <!--<li><a href="#"><i class="fa fa-files-o"></i> <span class="nav-label">Cart</span></a></li>-->
+    <!--</ul>-->
+    <!--</div>-->
     <!--</div>-->
 
 
@@ -92,6 +92,34 @@
           <span class="carousel-control-next-icon" aria-hidden="true"></span>
           <span class="sr-only">Next</span>
         </a>
+      </div>
+    </div>
+
+
+  </div>
+</div>
+<br>
+<br>
+<br>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="cross-sells">
+        <h2>You may be interested in...</h2>
+        <ul class="products">
+          <li *ngFor="let item of this.ip.recommendedItemsList" class="product  col-md-4 item-list-show-grid">
+            <a href="single-product.html">
+              <img width="300" height="300" alt="T_4_front"
+                   class="attachment-shop_catalog wp-post-image" src="../../../assets/images/img/product-2.jpg">
+              <h5>{{item.itemName}}</h5>
+              <span class="price"><span class="amount">£{{item.price}}</span></span>
+            </a>
+
+            <br>
+            <br>
+          </li>
+
+        </ul>
       </div>
     </div>
   </div>

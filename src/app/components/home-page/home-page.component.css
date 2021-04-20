@@ -150,6 +150,10 @@ h1, h2, h3, h4, h5, h6, p, ul, ol {
   width: 100%;
 }
 
+.item-list-show-grid{
+  display: inline-block;
+  height: 400px;
+}
 img {
   height: 450px;
 }
