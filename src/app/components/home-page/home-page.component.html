@@ -108,11 +108,15 @@
         <h2>You may be interested in...</h2>
         <ul class="products">
           <li *ngFor="let item of this.ip.recommendedItemsList" class="product  col-md-4 item-list-show-grid">
-            <a href="single-product.html">
-              <img width="300" height="300" alt="T_4_front"
+            <a href="single-product.html" class="home-item-image">
+              <img width="200" height="300" alt="T_4_front"
                    class="attachment-shop_catalog wp-post-image" src="../../../assets/images/img/product-2.jpg">
-              <h5>{{item.itemName}}</h5>
-              <span class="price"><span class="amount">£{{item.price}}</span></span>
+
+              <div  class="price-span">
+                <h5>{{item.itemName}}</h5>
+                <span><span class="amount">£{{item.price}}</span></span>
+              </div>
+
             </a>
 
             <br>

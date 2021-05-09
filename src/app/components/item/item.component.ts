@@ -22,10 +22,13 @@ export class ItemComponent implements OnInit {
 
   ngOnInit() {
     this.ipService.setCategoryList();
-    this.categoriesList = this.ipService.itemCategories;
-    this.itemImagePaths = AppModule.itemImagePaths;
-    this.item.category = this.categoriesList[0];
-    this.item.imgSrc = this.itemImagePaths[0];
+    setTimeout(() => {
+      this.categoriesList = this.ipService.itemCategories;
+      this.itemImagePaths = AppModule.itemImagePaths;
+      this.item.category = this.categoriesList[0];
+      this.item.imgSrc = this.itemImagePaths[0];
+    }, 100)
+
 
   }
 

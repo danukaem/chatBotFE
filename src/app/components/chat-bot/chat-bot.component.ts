@@ -52,7 +52,7 @@ export class ChatBotComponent implements OnInit {
           this.robotMessage = response.body.robotMessage;
           this.msg.nativeElement.value = '';
           if (this.ipService.userId !== undefined && this.ipService.userId !== null) {
-            this.ipService.getRecommendItemList()
+            this.ipService.getRecommendItemList_chat()
               .subscribe(responseItem => {
                 this.ipService.recommendedItemsList = responseItem.body;
               }, error => {
@@ -60,7 +60,7 @@ export class ChatBotComponent implements OnInit {
                 alert('error ');
               });
           } else {
-            this.ipService.getRecommendItemListByIpAddress()
+            this.ipService.getRecommendItemListByIpAddress_chat()
               .subscribe(responseItem => {
                 this.ipService.recommendedItemsList = responseItem.body;
               }, error => {

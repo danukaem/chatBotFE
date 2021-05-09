@@ -153,6 +153,7 @@ export class IpServiceService {
     });
   }
 
+
   public getRecommendItemListByIpAddress() {
     const headers = new HttpHeaders(({Authorization: 'Basic ' + btoa('user' + ':' + 'password')}));
 
@@ -162,6 +163,23 @@ export class IpServiceService {
     });
   }
 
+  public getRecommendItemListByIpAddress_chat() {
+    const headers = new HttpHeaders(({Authorization: 'Basic ' + btoa('user' + ':' + 'password')}));
+
+    return this.http.get<any>(`${this.resourceBaseURL}` + 'cartItem/getRecommendCartItemListByIpAddress_chat/' + this.ipAddress, {
+      observe: 'response',
+      headers
+    });
+  }
+
+  public getRecommendItemList_chat() {
+    const headers = new HttpHeaders(({Authorization: 'Basic ' + btoa('user' + ':' + 'password')}));
+
+    return this.http.get<any>(`${this.resourceBaseURL}` + 'cartItem/getRecommendCartItemListByUserId_chat/' + this.userId, {
+      observe: 'response',
+      headers
+    });
+  }
   public setSessionId(sessionId: string) {
     this.sessionId = sessionId;
   }

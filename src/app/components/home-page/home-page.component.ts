@@ -36,19 +36,8 @@ export class HomePageComponent implements OnInit {
       $('.sidebar').toggleClass('fliph');
     });
 
-    // setTimeout(() => {
-    //   console.log('session id : ', this.ip.ipAddress)
 
-
-    if (this.ip.ipAddress != null) {
-      this.ip.getRecommendItemListByIpAddress()
-        .subscribe(response => {
-          this.ip.recommendedItemsList = response.body;
-        }, error => {
-          console.log(error);
-          alert('error ');
-        });
-    } else {
+    if (this.ip.userId !== undefined && this.ip.userId !== null) {
       this.ip.getRecommendItemList()
         .subscribe(response => {
           this.ip.recommendedItemsList = response.body;
@@ -56,8 +45,16 @@ export class HomePageComponent implements OnInit {
           console.log(error);
           alert('error ');
         });
+    } else {
+
+      this.ip.getRecommendItemListByIpAddress()
+        .subscribe(response => {
+          this.ip.recommendedItemsList = response.body;
+        }, error => {
+          console.log(error);
+          alert('error ');
+        });
     }
-    // }, 1000);
 
   }
 

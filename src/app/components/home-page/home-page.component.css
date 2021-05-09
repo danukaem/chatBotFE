@@ -178,3 +178,11 @@ img {
   }
 
 }
+
+.price-span{
+  height: 80px;
+}
+
+.home-item-image img{
+  height: 300px !important;
+}
