@@ -71,8 +71,8 @@
 
           <select class=" col-md-4 btn btn-secondary " type="button" id="imgSrc"
                   name="images" (change)="selectImage($event.target.value)">
-            <option *ngFor="let imagePath of itemImagePaths" value={{imagePath}}>
-              <app-image-selector [imgSrc]=imagePath></app-image-selector>
+            <option *ngFor="let imagePath of imageSrc" value={{imagePath.path}}>
+              <app-image-selector [imgSrc]=imagePath.name></app-image-selector>
             </option>
 
           </select>

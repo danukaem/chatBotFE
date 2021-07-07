@@ -4,6 +4,7 @@ import {Item} from '../../model/Item';
 import {environment} from 'src/environments/environment';
 import {AppModule} from '../../app.module';
 import {IpServiceService} from '../../ip-service.service';
+import {UtilService} from '../../utilService';
 
 @Component({
   selector: 'app-item',
@@ -12,22 +13,24 @@ import {IpServiceService} from '../../ip-service.service';
 })
 export class ItemComponent implements OnInit {
   categoriesList = [];
-  itemImagePaths = [];
   item = new Item();
   resourceBaseURL: string;
+  imageSrc: { name: string, path: string }[] = [];
 
-  constructor(private http: HttpClient, private ipService: IpServiceService) {
+  constructor(private http: HttpClient, private ipService: IpServiceService, private utilService: UtilService
+  ) {
     this.resourceBaseURL = environment.resourceBaseURL;
   }
 
   ngOnInit() {
+
     this.ipService.setCategoryList();
     setTimeout(() => {
       this.categoriesList = this.ipService.itemCategories;
-      this.itemImagePaths = AppModule.itemImagePaths;
+      this.imageSrc = this.utilService.imageSrc;
       this.item.category = this.categoriesList[0];
-      this.item.imgSrc = this.itemImagePaths[0];
-    }, 100)
+      this.item.imgSrc = this.imageSrc[0].path;
+    }, 100);
 
 
   }
