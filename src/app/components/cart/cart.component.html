@@ -180,7 +180,7 @@
                   <li *ngFor="let item of this.ip.recommendedItemsList" class="product  col-md-5">
                     <a href="single-product.html">
                       <img width="300" height="300" alt="T_4_front"
-                           class="attachment-shop_catalog wp-post-image" src="../../../assets/images/img/product-2.jpg">
+                           class="attachment-shop_catalog wp-post-image"  src="{{item.imgSrc}}">
                       <div class="interested-item">
                         <h6>{{item.itemName}}</h6>
                         <span class="price"><span class="amount">£{{item.price}}</span></span>
