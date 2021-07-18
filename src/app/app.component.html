@@ -48,8 +48,9 @@
     </form>
 
 
-    <label class="nav-item active signOut_lbl" *ngIf="userName!== null" (click)="signOut()" routerLink="/home"> sign
-      out</label>
+    <button class="signOut_lbl btn btn-primary" *ngIf="userName!== null" (click)="signOut()" routerLink="/home">
+      {{userName}}   &nbsp;&nbsp;&nbsp;<i class="fa fa-sign-out"></i>
+    </button>
 
   </div>
 </nav>

@@ -1914,3 +1914,7 @@ div.cart-collaterals ul.products li.product:hover .add_to_cart_button {
   margin: 1%;
   /*margin: 10px;*/
 }
+
+.signOut_lbl:hover{
+  cursor: pointer;
+}

@@ -47,6 +47,7 @@ export class ItemComponent implements OnInit {
     }, error => {
       alert('error');
     });
+    location.reload();
   }
 
   categorySelect(category: any) {

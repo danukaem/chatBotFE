@@ -18,6 +18,7 @@ export class SignUpComponent implements OnInit {
   @ViewChild('bdy') bdy;
   @ViewChild('cntry') cntry;
   @ViewChild('cty') cty;
+  @ViewChild('age') age;
   userDetails = new UserDetails();
   resourceBaseURL: string;
 
@@ -60,6 +61,7 @@ export class SignUpComponent implements OnInit {
     this.bdy.nativeElement.value = ' ';
     this.cntry.nativeElement.value = ' ';
     this.cty.nativeElement.value = ' ';
+    this.age.nativeElement.value = ' ';
 
   }
 

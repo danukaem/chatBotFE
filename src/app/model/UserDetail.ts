@@ -7,6 +7,7 @@ export class UserDetails {
   public birthDay: string;
   public country: string;
   public city: string;
+  public age: string;
 
   constructor() {
   }
