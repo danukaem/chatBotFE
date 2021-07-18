@@ -13,7 +13,7 @@ export class UtilService {
     this.imageSrc.push({name: 'Bun', path: './assets/images/homepage/3.jpg'});
     this.imageSrc.push({name: 'Bread', path: './assets/images/homepage/4.jpg'});
     this.imageSrc.push({name: 'Frocks 1', path: './assets/images/homepage/5.jpg'});
-    this.imageSrc.push({name: 'Frocks 1', path: './assets/images/homepage/6.jpg'});
+    this.imageSrc.push({name: 'Frocks 2', path: './assets/images/homepage/6.jpg'});
     this.imageSrc.push({name: 'Noodles', path: './assets/images/homepage/7.jpg'});
     this.imageSrc.push({name: 'Iphone 6/6s', path: './assets/images/img/h4-slide.png'});
     this.imageSrc.push({name: 'School Bag', path: './assets/images/img/h4-slide2.png'});
