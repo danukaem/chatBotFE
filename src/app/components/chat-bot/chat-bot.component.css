@@ -8,14 +8,13 @@
   z-index: 100;
   background: white;
   position: fixed;
-  bottom: 12%;
+  bottom: 15%;
   right: 2%;
   border-radius: 15px;
   border: 0 solid transparent;
   padding-left: 0 !important;
   padding-right: 0 !important;
 }
-
 
 .chatbot_header {
   background: #007bff;
@@ -28,6 +27,7 @@
   height: 250px;
   padding: 2px;
   overflow-y: scroll;
+  background-image: url("../../../assets/images/img/rasaChatBG1.jpg");
 
 }
 
@@ -60,3 +60,17 @@
   width: 33px;
 }
 
+.chat_close_icon:hover {
+  cursor: pointer;
+}
+
+.chat-btn {
+  background: transparent;
+  border-radius: 30px;
+  /*width: 40px;*/
+}
+
+#userMessageInput {
+  background-image: url("../../../assets/images/img/rasaChatBG1.jpg");
+  color: white;
+}

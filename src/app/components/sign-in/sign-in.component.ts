@@ -47,5 +47,23 @@ export class SignInComponent implements OnInit {
     }, error => {
       alert('error in signIn');
     });
+
+    setTimeout(() => {
+      const msg = 'user name is ' + this.userDetails.userName + ' and user id is ' + localStorage.getItem('userId');
+
+      this.http.get<any>(`${this.resourceBaseURL}` + 'chatMessage/chatLoginRasa?chatMessage=' + msg + '&chatSessionId=' + this.ipService.getIpAddress()
+        + '&userId=' + (this.ipService.getUserId() === undefined ? '' : this.ipService.getUserId()), {
+        observe: 'response',
+        headers
+      }).subscribe(response => {
+
+      }, error => {
+        console.log(error);
+        alert('error 2');
+
+      });
+    }, 100);
+
+
   }
 }

@@ -15,7 +15,6 @@ export class SignUpComponent implements OnInit {
   @ViewChild('uName') uName;
   @ViewChild('eml') eml;
   @ViewChild('pswd') pswd;
-  @ViewChild('bdy') bdy;
   @ViewChild('cntry') cntry;
   @ViewChild('cty') cty;
   @ViewChild('age') age;
@@ -58,7 +57,6 @@ export class SignUpComponent implements OnInit {
     this.uName.nativeElement.value = ' ';
     this.eml.nativeElement.value = ' ';
     this.pswd.nativeElement.value = ' ';
-    this.bdy.nativeElement.value = ' ';
     this.cntry.nativeElement.value = ' ';
     this.cty.nativeElement.value = ' ';
     this.age.nativeElement.value = ' ';

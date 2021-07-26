@@ -16,7 +16,7 @@ export class ChatBotComponent implements OnInit {
   isVisibleChat: boolean;
   @ViewChild('msg') msg;
 
-  chatMessageSample: { chatMember: string, chatMessage: string, time: string }[] = [];
+  chatMessageContentList: { chatMember: string, chatMessage: string, time: string }[] = [];
 
   constructor(private http: HttpClient, private ipService: IpServiceService) {
     this.chatServiceURL = environment.chatServiceURL;
@@ -27,34 +27,45 @@ export class ChatBotComponent implements OnInit {
     this.userMessage = '';
     this.robotMessage = 'Hey!, how can i help you?';
     this.isVisibleChat = false;
-    this.chatMessageSample.push({chatMember: 'robot', chatMessage: 'hello', time: '15.53'});
-    this.chatMessageSample.push({chatMember: 'user', chatMessage: 'hi, I need to buy a laptop', time: '15.54'});
-    this.chatMessageSample.push({chatMember: 'robot', chatMessage: 'sure. what are the features of the laptop ?', time: '15.55'});
-    this.chatMessageSample.push({chatMember: 'user', chatMessage: '2gb ram , 16inch screen hp laptop', time: '15.56'});
-    this.chatMessageSample.push({chatMember: 'robot', chatMessage: 'sure. what are the features of the laptop ?', time: '15.55'});
-    this.chatMessageSample.push({chatMember: 'user', chatMessage: '2gb ram , 16inch screen hp laptop', time: '15.56'});
-    this.chatMessageSample.push({chatMember: 'robot', chatMessage: 'sure. what are the features of the laptop ?', time: '15.55'});
-    this.chatMessageSample.push({chatMember: 'user', chatMessage: '2gb ram , 16inch screen hp laptop', time: '15.56'});
-    this.chatMessageSample.push({chatMember: 'robot', chatMessage: 'sure. what are the features of the laptop ?', time: '15.55'});
-    this.chatMessageSample.push({chatMember: 'user', chatMessage: '2gb ram , 16inch screen hp laptop', time: '15.56'});
-    this.chatMessageSample.push({chatMember: 'robot', chatMessage: 'sure. what are the features of the laptop ?', time: '15.55'});
-    this.chatMessageSample.push({chatMember: 'user', chatMessage: '2gb ram , 16inch screen hp laptop', time: '15.56'});
-
-
   }
 
 
   openChatBot() {
     this.isVisibleChat = !this.isVisibleChat;
     this.chatScrollBottom();
+    this.getAllMesasgesByUser();
   }
 
   chatScrollBottom() {
     setTimeout(() => {
       const messageContent = document.getElementById('message_content');
-      messageContent.scrollTop = messageContent.scrollHeight;
+      if (messageContent != null) {
+        messageContent.scrollTop = messageContent.scrollHeight;
+      }
     }, 2);
 
+  }
+
+  getAllMesasgesByUser() {
+    const headers = new HttpHeaders(({Authorization: 'Basic ' + btoa('user' + ':' + 'password')}));
+    this.http.get<any>(`${this.resourceBaseURL}` + 'chatMessage/getChatMessageList?'
+      + '&userId=' + (this.ipService.getUserId() === undefined ? '' : this.ipService.getUserId()), {
+      observe: 'response',
+      headers
+    }).subscribe(response => {
+      if (response.body == null) {
+        alert('message empty');
+      } else {
+        this.chatMessageContentList = response.body;
+        this.chatScrollBottom();
+        this.msg.nativeElement.value = '';
+      }
+    }, error => {
+      console.log(error);
+      alert('error 2');
+      this.msg.nativeElement.value = '';
+
+    });
   }
 
   sendMessage(message: string) {
@@ -62,35 +73,16 @@ export class ChatBotComponent implements OnInit {
       this.userMessage = message;
       const headers = new HttpHeaders(({Authorization: 'Basic ' + btoa('user' + ':' + 'password')}));
       this.http.get<any>(`${this.resourceBaseURL}` + 'chatMessage/chat?chatMessage=' + message + '&chatSessionId=' + this.ipService.getIpAddress()
-        + '&userId=' + (this.ipService.getUserId() === undefined ? '' : this.ipService.getUserId()) + '&ipAddress=' + (this.ipService.getIpAddress() === undefined ? '' : this.ipService.getIpAddress())
-        + '&orderId=' + (this.ipService.getOrderId() === undefined ? '' : this.ipService.getOrderId()) + '&stateOfOrder=' + (this.ipService.getStateOfOrder() === undefined ? 'PENDING' : this.ipService.getStateOfOrder())
-        + '&cartId=' + (this.ipService.getCartId() === undefined ? '' : this.ipService.getCartId()), {
+        + '&userId=' + (this.ipService.getUserId() === undefined ? '' : this.ipService.getUserId()), {
         observe: 'response',
         headers
       }).subscribe(response => {
-        if (response.body.robotMessage == null) {
-          alert('message null');
+        if (response.body == null) {
+          alert('message empty');
         } else {
-          this.robotMessage = response.body.robotMessage;
+          this.chatMessageContentList = response.body;
+          this.chatScrollBottom();
           this.msg.nativeElement.value = '';
-          if (this.ipService.userId !== undefined && this.ipService.userId !== null) {
-            // this.ipService.getRecommendItemList_chat()
-            //   .subscribe(responseItem => {
-            //     this.ipService.recommendedItemsList = responseItem.body;
-            //   }, error => {
-            //     console.log(error);
-            //     alert('error ');
-            //   });
-          } else {
-            // this.ipService.getRecommendItemListByIpAddress_chat()
-            //   .subscribe(responseItem => {
-            //     this.ipService.recommendedItemsList = responseItem.body;
-            //   }, error => {
-            //     console.log(error);
-            //     alert('error ');
-            //   });
-          }
-
         }
       }, error => {
         console.log(error);
