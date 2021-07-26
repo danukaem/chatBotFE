@@ -44,7 +44,7 @@ export class SignUpComponent implements OnInit {
       this.router.navigate(['/sign_in']);
 
     }, error => {
-      alert('error');
+      alert('error in sign Up');
     });
 
 

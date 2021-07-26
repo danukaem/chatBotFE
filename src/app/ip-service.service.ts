@@ -58,10 +58,10 @@ export class IpServiceService {
   }
 
   public getUserName(): string {
-    console.log(localStorage.getItem('userNameaaa'))
+    console.log(localStorage.getItem('userName'))
 
-    if (localStorage.getItem('userNamea') !== null) {
-      this.userName = localStorage.getItem('userNamea');
+    if (localStorage.getItem('userName') !== null) {
+      this.userName = localStorage.getItem('userName');
     }
     return this.userName;
   }
@@ -71,6 +71,8 @@ export class IpServiceService {
       localStorage.setItem('userId', userId);
     }
     this.userId = userId;
+    this.getUserById(this.userId);
+
   }
 
   public getUserId(): string {
@@ -92,7 +94,7 @@ export class IpServiceService {
       // this.items = response.body;
     }, error => {
       console.log(error);
-      alert('error');
+      alert('error in add Cart Items');
     });
 
   }
@@ -106,26 +108,24 @@ export class IpServiceService {
     return this.cartItems;
   }
 
-  // public removeFromCart(cartItem: CartItem) {
-  //   this.cartItems.pop(cartItem);
-  // }
-
 
   public getUserById(userId: string): UserDetails {
     let userDetails = new UserDetails();
     const headers = new HttpHeaders(({Authorization: 'Basic ' + btoa('user' + ':' + 'password')}));
 
-    this.http.get<any>(`${this.resourceBaseURL}` + 'user/getUserByUserId/' + this.userId, {
-      observe: 'response',
-      headers
-    }).subscribe(response => {
-      userDetails = response.body;
-      this.userDetails = userDetails;
-    }, error => {
-      console.log(error);
+    if (this.userId != null) {
+      this.http.get<any>(`${this.resourceBaseURL}` + 'user/getUserByUserId/' + this.userId, {
+        observe: 'response',
+        headers
+      }).subscribe(response => {
+        userDetails = response.body;
+        this.userDetails = userDetails;
+      }, error => {
+        console.log(error);
 
-      alert('error 1');
-    });
+        alert('error 1');
+      });
+    }
     return userDetails;
   }
 
@@ -143,43 +143,11 @@ export class IpServiceService {
     });
   }
 
-
-  public getRecommendItemList() {
-    const headers = new HttpHeaders(({Authorization: 'Basic ' + btoa('user' + ':' + 'password')}));
-
-    return this.http.get<any>(`${this.resourceBaseURL}` + 'cartItem/getRecommendCartItemListByUserId/' + this.userId, {
-      observe: 'response',
-      headers
-    });
+  public getUser(): UserDetails {
+    return this.userDetails;
   }
 
 
-  public getRecommendItemListByIpAddress() {
-    const headers = new HttpHeaders(({Authorization: 'Basic ' + btoa('user' + ':' + 'password')}));
-
-    return this.http.get<any>(`${this.resourceBaseURL}` + 'cartItem/getRecommendCartItemListByIpAddress/' + this.ipAddress, {
-      observe: 'response',
-      headers
-    });
-  }
-
-  public getRecommendItemListByIpAddress_chat() {
-    const headers = new HttpHeaders(({Authorization: 'Basic ' + btoa('user' + ':' + 'password')}));
-
-    return this.http.get<any>(`${this.resourceBaseURL}` + 'cartItem/getRecommendCartItemListByIpAddress_chat/' + this.ipAddress, {
-      observe: 'response',
-      headers
-    });
-  }
-
-  public getRecommendItemList_chat() {
-    const headers = new HttpHeaders(({Authorization: 'Basic ' + btoa('user' + ':' + 'password')}));
-
-    return this.http.get<any>(`${this.resourceBaseURL}` + 'cartItem/getRecommendCartItemListByUserId_chat/' + this.userId, {
-      observe: 'response',
-      headers
-    });
-  }
   public setSessionId(sessionId: string) {
     this.sessionId = sessionId;
   }

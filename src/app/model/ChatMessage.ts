@@ -1,13 +1,11 @@
-export class ChatMessage{
-  public  chatId;
-  public  chatSessionId;
-  public  userId;
-  public  ipAddress;
-  public  chatMember;
-  public  chatMessage;
-  public  cartId;
-  public  orderId;
-  public  stateOfOrder;
+import {UserDetails} from './UserDetail';
+
+export class ChatMessage {
+  public chatId: string;
+  public chatSessionId: string;
+  public user: UserDetails;
+  public chatMember: string;
+  public chatMessage: string;
 
   constructor() {
 

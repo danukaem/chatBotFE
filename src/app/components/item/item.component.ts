@@ -45,7 +45,7 @@ export class ItemComponent implements OnInit {
       alert('success');
       console.log(response.body);
     }, error => {
-      alert('error');
+      alert('error in item saving');
     });
     location.reload();
   }

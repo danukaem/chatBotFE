@@ -33,7 +33,7 @@ export class CartComponent implements OnInit {
     }).subscribe(response => {
       this.itemDetailsList = response.body;
     }, error => {
-      alert('error');
+      alert('error in get Item List');
     });
 
 
@@ -51,17 +51,8 @@ export class CartComponent implements OnInit {
         }
       }, error => {
         console.log(error);
-        alert('error ');
+        alert('error in get Cart Item List By User Id');
       });
-
-
-      this.ip.getRecommendItemList()
-        .subscribe(response => {
-          this.ip.recommendedItemsList = response.body;
-        }, error => {
-          console.log(error);
-          alert('error ');
-        });
 
 
     } else {
@@ -78,16 +69,8 @@ export class CartComponent implements OnInit {
       }, error => {
         console.log(error);
 
-        alert('error ');
+        alert('error in get Cart Item List By session');
       });
-
-      this.ip.getRecommendItemListByIpAddress()
-        .subscribe(response => {
-          this.ip.recommendedItemsList = response.body;
-        }, error => {
-          console.log(error);
-          alert('error ');
-        });
 
     }
   }
@@ -109,9 +92,10 @@ export class CartComponent implements OnInit {
       totalAmount = totalAmount + (cItm.item.price * (100 - cItm.item.discountPercentage) / 100);
     });
     orderDetail.orderAmount = totalAmount;
-    orderDetail.isPaid = true;
+    orderDetail.orderDate = new Date();
     orderDetail.purchaseDate = new Date();
     orderDetail.stateOfOrder = 'PAID';
+    orderDetail.sessionId = this.ip.ipAddress;
 
 
     const headers = new HttpHeaders(({Authorization: 'Basic ' + btoa('user' + ':' + 'password')}));
@@ -119,15 +103,10 @@ export class CartComponent implements OnInit {
       observe: 'response',
       headers
     }).subscribe(response => {
-
-
       const itemListLength = this.ip.cartItems.length;
       for (let i = 0; i < itemListLength; i++) {
         this.ip.cartItems.pop();
-
-
       }
-
 
       this.ip.setCartItems([]);
       this.ip.setOrderId(response.body)
@@ -135,7 +114,7 @@ export class CartComponent implements OnInit {
     }, error => {
       console.log(error);
 
-      alert('error ');
+      alert('error in add Order Details');
     });
 
   }
@@ -154,8 +133,8 @@ export class CartComponent implements OnInit {
 
     const totalAmount = 0;
 
+    // ??????????????????????????? check this total
     orderDetail.orderAmount = totalAmount;
-    orderDetail.isPaid = false;
     orderDetail.purchaseDate = new Date();
     orderDetail.stateOfOrder = 'CANCELED';
 
@@ -174,7 +153,7 @@ export class CartComponent implements OnInit {
     }, error => {
       console.log(error);
 
-      alert('error ');
+      alert('error in remove Order Details');
     });
 
 

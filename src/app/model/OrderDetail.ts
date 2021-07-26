@@ -8,9 +8,9 @@ export class OrderDetail {
   purchaseDate: Date;
   user: UserDetails;
   cartItems: CartItem[];
-  isPaid: any;
   stateOfOrder: any;
   // PAID, CANCELED,PENDING
+  sessionId: string;
 
 
   constructor() {

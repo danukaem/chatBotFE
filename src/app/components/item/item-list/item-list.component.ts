@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Item} from '../../../model/Item';
-import {CartItem} from '../../../model/CartItem';
 import {IpServiceService} from '../../../ip-service.service';
 import {environment} from 'src/environments/environment';
 
@@ -28,19 +27,8 @@ export class ItemListComponent implements OnInit {
     }).subscribe(response => {
       this.itemDetailsList = response.body;
     }, error => {
-      alert('error');
+      alert('error in get Item List');
     });
 
   }
-
-  //
-  // addToCart(item: Item, quantity) {
-  //   const cItem = new CartItem();
-  //   cItem.item = item;
-  //   cItem.quantity = quantity;
-  //   cItem.userId = this.ipService.userId;
-  //   cItem.ipAddress = this.ipService.ipAddress;
-  //   this.ipService.addToCart(cItem);
-  //
-  // }
 }

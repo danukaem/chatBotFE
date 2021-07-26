@@ -13,7 +13,6 @@ import {Item} from '../../model/Item';
   styleUrls: ['./home-page.component.css']
 })
 export class HomePageComponent implements OnInit {
-  userList: UserDetails[];
   resourceBaseURL: string;
   recommendedItemsList: Item[] = [];
 
@@ -22,40 +21,9 @@ export class HomePageComponent implements OnInit {
   }
 
   ngOnInit() {
-    const headers = new HttpHeaders(({Authorization: 'Basic ' + btoa('user' + ':' + 'password')}));
-    this.http.get<any>(`${this.resourceBaseURL}` + 'user/getUserList', {
-      observe: 'response',
-      headers
-    }).subscribe(response => {
-      this.userList = response.body;
-    }, error => {
-      // alert('error')
-    });
-
     $('#sidebar-div').click(() => {
       $('.sidebar').toggleClass('fliph');
     });
-
-
-    if (this.ip.userId !== undefined && this.ip.userId !== null) {
-      this.ip.getRecommendItemList()
-        .subscribe(response => {
-          this.ip.recommendedItemsList = response.body;
-        }, error => {
-          console.log(error);
-          alert('error ');
-        });
-    } else {
-
-      this.ip.getRecommendItemListByIpAddress()
-        .subscribe(response => {
-          this.ip.recommendedItemsList = response.body;
-        }, error => {
-          console.log(error);
-          alert('error ');
-        });
-    }
-
   }
 
 }

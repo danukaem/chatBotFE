@@ -35,6 +35,7 @@ export class SignInComponent implements OnInit {
         alert('login success');
         this.ipService.setUserName(response.body.userName);
         this.ipService.setUserId(response.body.userId);
+        this.ipService.getUserById(response.body.userId);
         this.router.navigate(['/home']);
 
         setTimeout(() => {
@@ -44,7 +45,7 @@ export class SignInComponent implements OnInit {
       }
 
     }, error => {
-      alert('error');
+      alert('error in signIn');
     });
   }
 }

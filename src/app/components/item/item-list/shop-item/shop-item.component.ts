@@ -4,6 +4,7 @@ import {CartItem} from '../../../../model/CartItem';
 import {environment} from '../../../../../environments/environment';
 import {IpServiceService} from '../../../../ip-service.service';
 import {HttpClient} from '@angular/common/http';
+import {UserDetails} from '../../../../model/UserDetail';
 
 @Component({
   selector: 'app-shop-item',
@@ -26,14 +27,11 @@ export class ShopItemComponent implements OnInit {
 
 
   addToCart(item: Item, quantity) {
-    // alert('Item added successfully');
-    // console.log('item ', item)
-    // console.log('quantity ', quantity)
     const cItem = new CartItem();
     cItem.item = item;
     cItem.quantity = quantity;
-    cItem.userId = this.ipService.userId;
-    cItem.ipAddress = this.ipService.ipAddress;
+    cItem.user = this.ipService.getUser();
+    cItem.sessionId = this.ipService.ipAddress;
     console.log('cItem ', cItem)
     this.ipService.addToCart(cItem);
 
