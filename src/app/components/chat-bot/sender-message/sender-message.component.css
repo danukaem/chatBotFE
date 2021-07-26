@@ -1,0 +1,24 @@
+.sender-msg-div {
+  position: relative;
+  width: 80%;
+  left: 0;
+}
+
+.sender_img {
+  display: inline-block;
+  width: 8%;
+}
+
+.sender_img img {
+  width: 100%;
+
+}
+
+.sender_msg {
+  display: inline-block;
+  width: 85%;
+  background: #c5cfd3;
+  border-radius: 0 15px 15px 15px;
+  padding: 3%;
+  margin: 2%;
+}

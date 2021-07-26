@@ -9,24 +9,41 @@
   </div>
 </div>
 <div class="container" *ngIf="isVisibleChat">
-  <div class="row">
-    <div class="col-md-6"></div>
-    <div class="col-md-6  chat-messages-float">
-      <label>you :</label>&nbsp;&nbsp;
-      <label>{{userMessage}}</label>
-      <br>
 
-      <label>
-        robot :
-      </label>&nbsp;&nbsp;
-      <label>{{robotMessage}}</label>
-      <br>
+  <div class="row">
+    <div class="col-md-3  chat-messages-float">
+      <div class="chatbot_header">
+        <span style="display: inline-block">Chat bot </span>
+        <span><i class="fa fa-close" style="font-size:24px;float: right;position: relative;color:blue"
+                 (click)="openChatBot()"></i></span>
+      </div>
+      <div class="message_content" id="message_content">
+
+        <div *ngFor="let chatItem of chatMessageSample">
+          <app-sender-message *ngIf="chatItem.chatMember == 'user'" [message]=chatItem.chatMessage
+                              [time]=chatItem.time></app-sender-message>
+          <app-robot-message *ngIf="chatItem.chatMember == 'robot'" [message]=chatItem.chatMessage
+                             [time]=chatItem.time></app-robot-message>
+        </div>
+      </div>
+
       <!--<input [(ngModel)]="userMessage" name="userName" type="text" class="form-control" placeholder="type message" (keyup)="pressEnter($event)">-->
-      <input id="userMessageInput" name="userName" type="text" class="form-control" placeholder="type message" #msg
-             (keyup)="pressEnter($event,msg.value)">
-      <br>
-      <button class="btn btn-primary" (click)="sendMessage(msg.value)">enter</button>
+
+      <div style="border-top: 1px solid black">
+        <div style="display: inline-block; width: 85%;">
+          <input id="userMessageInput" name="userName" type="text" class="form-control" placeholder="type message"
+                 #msg
+                 (keyup)="pressEnter($event,msg.value)">
+        </div>
+        <div style="display: inline-block ; width: 5%;">
+          <button class="btn btn-primary" (click)="sendMessage(msg.value)" style="border-radius: 30px"><i
+            class="fa fa-send-o" style="font-size:15px"></i></button>
+        </div>
+      </div>
+
+
     </div>
   </div>
+
 
 </div>

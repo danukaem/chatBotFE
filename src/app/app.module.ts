@@ -16,6 +16,8 @@ import {ShopItemComponent} from './components/item/item-list/shop-item/shop-item
 import {ProductType1Component} from './components/cart/product-type1/product-type1.component';
 import {ImageSelectorComponent} from './components/image-selector/image-selector.component';
 import {HashLocationStrategy, LocationStrategy} from '@angular/common';
+import { SenderMessageComponent } from './components/chat-bot/sender-message/sender-message.component';
+import { RobotMessageComponent } from './components/chat-bot/robot-message/robot-message.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +32,8 @@ import {HashLocationStrategy, LocationStrategy} from '@angular/common';
     ShopItemComponent,
     ProductType1Component,
     ImageSelectorComponent,
+    SenderMessageComponent,
+    RobotMessageComponent,
   ],
   imports: [
     BrowserModule,
