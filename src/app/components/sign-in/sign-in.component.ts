@@ -22,6 +22,7 @@ export class SignInComponent implements OnInit {
   }
 
   signin() {
+    this.userDetails.sessionId = this.ipService.getIpAddress();
     const headers = new HttpHeaders(({Authorization: 'Basic ' + btoa('user' + ':' + 'password')}));
 
     this.http.post<any>(`${this.resourceBaseURL}` + 'user/signIn', this.userDetails, {
@@ -62,7 +63,7 @@ export class SignInComponent implements OnInit {
         alert('error 2');
 
       });
-    }, 100);
+    }, 1000);
 
 
   }

@@ -7,6 +7,7 @@ export class UserDetails {
   public country: string;
   public city: string;
   public age: string;
+  public sessionId: string;
 
   constructor() {
   }

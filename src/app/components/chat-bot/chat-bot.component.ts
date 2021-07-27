@@ -33,7 +33,7 @@ export class ChatBotComponent implements OnInit {
   openChatBot() {
     this.isVisibleChat = !this.isVisibleChat;
     this.chatScrollBottom();
-    this.getAllMesasgesByUser();
+    this.getAllMessagesByUser();
   }
 
   chatScrollBottom() {
@@ -46,7 +46,7 @@ export class ChatBotComponent implements OnInit {
 
   }
 
-  getAllMesasgesByUser() {
+  getAllMessagesByUser() {
     const headers = new HttpHeaders(({Authorization: 'Basic ' + btoa('user' + ':' + 'password')}));
     this.http.get<any>(`${this.resourceBaseURL}` + 'chatMessage/getChatMessageList?'
       + '&userId=' + (this.ipService.getUserId() === undefined ? '' : this.ipService.getUserId()), {
@@ -62,7 +62,7 @@ export class ChatBotComponent implements OnInit {
       }
     }, error => {
       console.log(error);
-      alert('error 2');
+      alert('error in server');
       this.msg.nativeElement.value = '';
 
     });
