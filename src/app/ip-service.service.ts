@@ -135,6 +135,22 @@ export class IpServiceService {
 
   }
 
+
+  searchByBrand(brand) {
+    const headers = new HttpHeaders(({Authorization: 'Basic ' + btoa('user' + ':' + 'password')}));
+
+    this.http.get<any>(`${this.resourceBaseURL}` + 'item/findAllByBrand?brand=' + brand, {
+      observe: 'response',
+      headers
+    }).subscribe(response => {
+      if (response.body != null) {
+        this.itemDetailsList = response.body;
+      }
+    }, error => {
+      alert('error in search by brand');
+    });
+  }
+
   public getCartItems(): CartItem[] {
     return this.cartItems;
   }

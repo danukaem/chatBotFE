@@ -43,13 +43,14 @@
       </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      <input #brand class="form-control mr-sm-2" type="search" placeholder="Search by brand" aria-label="Search" >
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit" (click)="searchByBrand(brand.value)">Search
+      </button>
     </form>
 
 
     <button class="signOut_lbl btn btn-primary" *ngIf="userName!== null" (click)="signOut()" routerLink="/home">
-      {{userName}}   &nbsp;&nbsp;&nbsp;<i class="fa fa-sign-out"></i>
+      {{userName}} &nbsp;&nbsp;&nbsp;<i class="fa fa-sign-out"></i>
     </button>
 
   </div>
@@ -153,6 +154,6 @@
 </div>
 
 
-<app-chat-bot  *ngIf="userName!== null"></app-chat-bot>
+<app-chat-bot *ngIf="userName!== null"></app-chat-bot>
 </body>
 </html>

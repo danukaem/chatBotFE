@@ -34,4 +34,8 @@ export class AppComponent implements OnInit {
     location.reload();
 
   }
+
+  searchByBrand(value: string) {
+    this.ip.searchByBrand(value);
+  }
 }
