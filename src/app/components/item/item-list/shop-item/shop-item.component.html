@@ -3,15 +3,15 @@
     <span class="image-header-txt">{{item.brand}}  {{item.ram}}GB ram  {{item.screen}}inch screen  {{item.storage}}GB hard  {{item.color}} color</span>
     <img src={{item.imgSrc}} alt="">
   </div>
-  <h2><a href="">{{item.itemName}}</a></h2>
+  <h2 style="background-color: rgba(28,255,245,0.29); font-size: 25px"> <a href="">{{item.itemName}}</a></h2>
   <div class="product-carousel-price">
     <div class="row">
-      <div class="col-md-4">
-        <del>Rs.{{item.price}}</del>
+      <div class="col-md-6">
+        <span style="background-color: #bc8abe; font-size: 20px">Rs.{{item.price}}</span>
 
       </div>
-      <div class="col-md-4">
-        <ins>Rs.{{item.price*(100-item.discountPercentage)/100}}</ins>
+      <div class="col-md-6" style="position: relative;float: right">
+        <span>  {{item.discountPercentage}} % Discount</span>
 
       </div>
     </div>
