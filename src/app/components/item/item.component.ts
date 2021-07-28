@@ -16,6 +16,8 @@ export class ItemComponent implements OnInit {
   item = new Item();
   resourceBaseURL: string;
   imageSrc: { name: string, path: string }[] = [];
+  colorList: any = [];
+  brandList: any = [];
 
   constructor(private http: HttpClient, private ipService: IpServiceService, private utilService: UtilService
   ) {
@@ -23,16 +25,19 @@ export class ItemComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.categoriesList = ['LAPTOP', 'PHONE'];
 
     this.ipService.setCategoryList();
     setTimeout(() => {
-      this.categoriesList = this.ipService.itemCategories;
+      // this.categoriesList = this.ipService.itemCategories;
       this.imageSrc = this.utilService.imageSrc;
+      this.item.brand = 'ACER';
+      this.item.color = 'BLUE';
       this.item.category = this.categoriesList[0];
       this.item.imgSrc = this.imageSrc[0].path;
     }, 100);
-
-
+    this.colorList = ['BLUE', 'BLACK', 'GREEN', 'WHITE', 'ORANGE', 'YELLOW', 'PINK', 'RED', 'PURPLE', 'GRAY', 'BROWN'];
+    this.brandList = ['ACER', 'APPLE', 'ASUS', 'DELL', 'HP', 'MICROSOFT', 'NOKIA', 'SAMSUNG', 'BLACKBERRY', 'GOOGLE', 'HTC'];
   }
 
   saveItem() {
@@ -47,7 +52,9 @@ export class ItemComponent implements OnInit {
     }, error => {
       alert('error in item saving');
     });
-    location.reload();
+    // setTimeout(() => {
+    //   location.reload();
+    // }, 100);
   }
 
   categorySelect(category: any) {
@@ -57,5 +64,15 @@ export class ItemComponent implements OnInit {
 
   selectImage(imagePath: any) {
     this.item.imgSrc = imagePath;
+  }
+
+  colorSelect(color: any) {
+    this.item.color = color;
+
+  }
+
+  brandSelect(brand: any) {
+    this.item.brand = brand;
+
   }
 }

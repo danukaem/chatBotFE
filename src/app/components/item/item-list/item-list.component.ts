@@ -11,24 +11,25 @@ import {environment} from 'src/environments/environment';
 })
 export class ItemListComponent implements OnInit {
 
-  itemDetailsList: Item[] = [];
+  // itemDetailsList: Item[] = [];
   resourceBaseURL: string;
 
-  constructor(private http: HttpClient, private ipService: IpServiceService) {
+  constructor(private http: HttpClient, public ipService: IpServiceService) {
     this.resourceBaseURL = environment.resourceBaseURL;
   }
 
   ngOnInit() {
-    const headers = new HttpHeaders(({Authorization: 'Basic ' + btoa('user' + ':' + 'password')}));
-
-    this.http.get<any>(`${this.resourceBaseURL}` + 'item/getItemList', {
-      observe: 'response',
-      headers
-    }).subscribe(response => {
-      this.itemDetailsList = response.body;
-    }, error => {
-      alert('error in get Item List');
-    });
+    this.ipService.itemListLoading();
+    // const headers = new HttpHeaders(({Authorization: 'Basic ' + btoa('user' + ':' + 'password')}));
+    //
+    // this.http.get<any>(`${this.resourceBaseURL}` + 'item/getItemList', {
+    //   observe: 'response',
+    //   headers
+    // }).subscribe(response => {
+    //   this.itemDetailsList = response.body;
+    // }, error => {
+    //   alert('error in get Item List');
+    // });
 
   }
 }

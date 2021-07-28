@@ -31,7 +31,7 @@
 
       <div style="border-top: 1px solid black">
         <div style="display: inline-block; width: 85%;">
-          <input [(ngModel)]="userMessage" id="userMessageInput" name="userName" type="text" class="form-control" placeholder="type message"
+          <input [(ngModel)]="userMessage" id="userMessageInput" name="userName" type="text" class="form-control" placeholder="type message" autocomplete="off"
                  #msg
                  (keyup)="pressEnter($event,msg.value)">
         </div>

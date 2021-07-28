@@ -7,6 +7,12 @@ export class Item {
   public discountPercentage: number;
   public imgSrc: string;
   public category: string;
+  public ram: string;
+  public screen: string;
+  public brand: string;
+  public color: string;
+  public storage: string;
+
 
   constructor() {
 

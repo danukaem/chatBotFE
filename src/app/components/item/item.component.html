@@ -46,17 +46,68 @@
 
       </div>
     </div>
+    <div class="form-group">
+      <label for="ram">Ram</label>
+      <input [(ngModel)]="item.ram" name="ram" type="number" class="form-control"
+             id="ram" placeholder="ram size in GB">
+    </div>
 
     <div class="form-group">
+      <label for="screen">Screen</label>
+      <input [(ngModel)]="item.screen" name="screen" type="number" class="form-control"
+             id="screen" placeholder="screen size in inches">
+    </div>
+    <div class="form-group">
+      <div class="row">
+        <div class="col-md-3">
+          <label for="color">Brand</label>
+        </div>
+        <div class="col-md-6">
+
+          <select class=" col-md-4 btn btn-secondary " type="button" id="brand" name="brand"
+                  (change)="brandSelect($event.target.value)">
+            <option *ngFor="let brand of brandList" value={{brand}} (change)="brandSelect(brand)">
+              {{brand}}
+            </option>
+
+          </select>
+        </div>
+
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="row">
+        <div class="col-md-3">
+          <label for="color">Color</label>
+        </div>
+        <div class="col-md-6">
+
+          <select class=" col-md-4 btn btn-secondary " type="button" id="color" name="color"
+                  (change)="colorSelect($event.target.value)">
+            <option *ngFor="let color of colorList" value={{color}} (change)="colorSelect(color)">
+              {{color}}
+            </option>
+
+          </select>
+        </div>
+
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="storage">Storage</label>
+      <input [(ngModel)]="item.storage" name="storage" type="number" class="form-control"
+             id="storage" placeholder="storage in GB">
+    </div>
+    <div class="form-group">
       <label for="price">Price</label>
-      <input [(ngModel)]="item.price" name="price" type="text" class="form-control"
-             id="price" placeholder="price">
+      <input [(ngModel)]="item.price" name="price" type="number" class="form-control"
+             id="price" placeholder="price in Rupees">
     </div>
 
     <div class="form-group">
       <label for="discount">Discount</label>
       <input [(ngModel)]="item.discountPercentage" name="image" type="text" class="form-control"
-             id="discount" placeholder="discount">
+             id="discount" placeholder="discount percentage">
 
     </div>
 

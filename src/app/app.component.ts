@@ -17,7 +17,8 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.ip.changeIpAddress(this.ip.makeRandom());
+    console.log(localStorage.getItem('sessionId'));
+    // this.ip.changeIpAddress(this.ip.makeRandom());
     this.ip.setCategoryList();
 
     this.userName = this.ip.userName;

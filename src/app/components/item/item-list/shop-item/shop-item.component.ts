@@ -31,7 +31,7 @@ export class ShopItemComponent implements OnInit {
     cItem.item = item;
     cItem.quantity = quantity;
     cItem.user = this.ipService.getUser();
-    cItem.sessionId = this.ipService.ipAddress;
+    cItem.sessionId = this.ipService.getIpAddress();
     console.log('cItem ', cItem)
     this.ipService.addToCart(cItem);
 

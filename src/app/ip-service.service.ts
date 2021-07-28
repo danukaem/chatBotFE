@@ -10,18 +10,20 @@ import {Item} from './model/Item';
 })
 export class IpServiceService {
 
-  ipAddress: string;
+  // ipAddress: string;
   userName: string;
   userId: string;
   cartItems: CartItem[] = [];
   userDetails: UserDetails;
   resourceBaseURL: string;
-  sessionId: string;
+  // sessionId: string;
   stateOfOrder: string;
   cartId: string;
   orderId: string;
   itemCategories: string[] = [];
   recommendedItemsList: Item[] = [];
+
+  itemDetailsList: Item[] = [];
 
   constructor(private http: HttpClient) {
     this.resourceBaseURL = environment.resourceBaseURL;
@@ -34,19 +36,22 @@ export class IpServiceService {
 
   }
 
-  public getIp() {
-    return this.http.get('http://api.ipify.org/?format=json');
-
-  }
+  // public getIp() {
+  //   return this.http.get('http://api.ipify.org/?format=json');
+  //
+  // }
 
   public changeIpAddress(val: string) {
-    this.ipAddress = val;
+    localStorage.setItem('sessionId', val);
+
+    // this.ipAddress = val;
 
   }
 
 
   public getIpAddress() {
-    return this.ipAddress;
+    return localStorage.getItem('sessionId');
+    // return this.ipAddress;
 
   }
 
@@ -77,6 +82,37 @@ export class IpServiceService {
 
   public getUserId(): string {
     return this.userId;
+  }
+
+
+  public itemListLoading() {
+    const headers = new HttpHeaders(({Authorization: 'Basic ' + btoa('user' + ':' + 'password')}));
+
+    this.http.get<any>(`${this.resourceBaseURL}` + 'item/getItemList', {
+      observe: 'response',
+      headers
+    }).subscribe(response => {
+      this.itemDetailsList = response.body;
+    }, error => {
+      alert('error in get Item List loading');
+    });
+
+  }
+
+  public recommenItemListLoading() {
+    const headers = new HttpHeaders(({Authorization: 'Basic ' + btoa('user' + ':' + 'password')}));
+
+    this.http.get<any>(`${this.resourceBaseURL}` + 'item/getRecommendItems?userId=' + this.userId + '&sessionId=' + this.getIpAddress(), {
+      observe: 'response',
+      headers
+    }).subscribe(response => {
+      if (response.body != null) {
+        this.itemDetailsList = response.body;
+      }
+    }, error => {
+      alert('error in get recommend Item List loading');
+    });
+
   }
 
   public addToCart(cartItem: CartItem) {
@@ -148,13 +184,13 @@ export class IpServiceService {
   }
 
 
-  public setSessionId(sessionId: string) {
-    this.sessionId = sessionId;
-  }
+  // public setSessionId(sessionId: string) {
+  //   this.sessionId = sessionId;
+  // }
 
-  public getSessionId(): string {
-    return this.sessionId;
-  }
+  // public getSessionId(): string {
+  //   return this.sessionId;
+  // }
 
   public setStateOfOrder(stateOfOrder: string) {
 
@@ -196,6 +232,9 @@ export class IpServiceService {
     for (let i = 0; i < lengthOfCode; i++) {
       text += possible.charAt(Math.floor(Math.random() * possible.length));
     }
+    console.log('----------------------------------------------------------------------------------')
+    console.log(text)
+    console.log('----------------------------------------------------------------------------------')
     return text;
   }
 

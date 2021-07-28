@@ -83,6 +83,12 @@ export class ChatBotComponent implements OnInit {
           this.chatMessageContentList = response.body;
           this.chatScrollBottom();
           this.msg.nativeElement.value = '';
+
+          setTimeout(() => {
+            this.ipService.recommenItemListLoading();
+
+          }, 100);
+
         }
       }, error => {
         console.log(error);
@@ -90,6 +96,11 @@ export class ChatBotComponent implements OnInit {
         this.msg.nativeElement.value = '';
 
       });
+
+      // setTimeout(() => {
+      //   this.ipService.recommenItemListLoading();
+      //
+      // }, 100);
     }
   }
 

@@ -22,49 +22,75 @@ export class SignInComponent implements OnInit {
   }
 
   signin() {
-    this.userDetails.sessionId = this.ipService.getIpAddress();
+    this.ipService.changeIpAddress(this.ipService.makeRandom());
+
+    setTimeout(() => {
+        this.userDetails.sessionId = this.ipService.getIpAddress();
+        const headers = new HttpHeaders(({Authorization: 'Basic ' + btoa('user' + ':' + 'password')}));
+
+        this.http.post<any>(`${this.resourceBaseURL}` + 'user/signIn', this.userDetails, {
+          observe: 'response',
+          headers
+        }).subscribe(response => {
+          if (response.body == null) {
+            alert('enter valid user credentials');
+
+          } else {
+            alert('login success');
+            this.ipService.setUserName(response.body.userName);
+            this.ipService.setUserId(response.body.userId);
+            this.ipService.getUserById(response.body.userId);
+            this.router.navigate(['/home']);
+
+            this.chatLoginRasa();
+            setTimeout(() => {
+              location.reload();
+            }, 100);
+
+          }
+
+        }, error => {
+          alert('error in signIn');
+        });
+
+        // setTimeout(() => {
+          // const msg = 'user name is ' + this.userDetails.userName + ' and user id is ' + localStorage.getItem('userId');
+          //
+          // this.http.get<any>(`${this.resourceBaseURL}` + 'chatMessage/chatLoginRasa?chatMessage=' + msg + '&chatSessionId=' + this.ipService.getIpAddress()
+          //   + '&userId=' + (this.ipService.getUserId() === undefined ? '' : this.ipService.getUserId()), {
+          //   observe: 'response',
+          //   headers
+          // }).subscribe(response => {
+          //
+          // }, error => {
+          //   console.log(error);
+          //   alert('error 2');
+          //
+          // });
+        // }, 1000);
+
+      },
+      100
+    );
+
+
+  }
+
+  chatLoginRasa() {
     const headers = new HttpHeaders(({Authorization: 'Basic ' + btoa('user' + ':' + 'password')}));
 
-    this.http.post<any>(`${this.resourceBaseURL}` + 'user/signIn', this.userDetails, {
+    const msg = 'user name is ' + this.userDetails.userName + ' and user id is ' + localStorage.getItem('userId');
+
+    this.http.get<any>(`${this.resourceBaseURL}` + 'chatMessage/chatLoginRasa?chatMessage=' + msg + '&chatSessionId=' + this.ipService.getIpAddress()
+      + '&userId=' + (this.ipService.getUserId() === undefined ? '' : this.ipService.getUserId()), {
       observe: 'response',
       headers
     }).subscribe(response => {
-      if (response.body == null) {
-        alert('enter valid user credentials');
-
-      } else {
-        alert('login success');
-        this.ipService.setUserName(response.body.userName);
-        this.ipService.setUserId(response.body.userId);
-        this.ipService.getUserById(response.body.userId);
-        this.router.navigate(['/home']);
-
-        setTimeout(() => {
-          location.reload();
-        }, 100);
-
-      }
 
     }, error => {
-      alert('error in signIn');
+      console.log(error);
+      alert('error 2');
+
     });
-
-    setTimeout(() => {
-      const msg = 'user name is ' + this.userDetails.userName + ' and user id is ' + localStorage.getItem('userId');
-
-      this.http.get<any>(`${this.resourceBaseURL}` + 'chatMessage/chatLoginRasa?chatMessage=' + msg + '&chatSessionId=' + this.ipService.getIpAddress()
-        + '&userId=' + (this.ipService.getUserId() === undefined ? '' : this.ipService.getUserId()), {
-        observe: 'response',
-        headers
-      }).subscribe(response => {
-
-      }, error => {
-        console.log(error);
-        alert('error 2');
-
-      });
-    }, 1000);
-
-
   }
 }

@@ -1,16 +1,17 @@
 <div class="single-shop-product">
   <div class="product-upper">
+    <span class="image-header-txt">{{item.brand}}  {{item.ram}}GB ram  {{item.screen}}inch screen  {{item.storage}}GB hard  {{item.color}} color</span>
     <img src={{item.imgSrc}} alt="">
   </div>
   <h2><a href="">{{item.itemName}}</a></h2>
   <div class="product-carousel-price">
     <div class="row">
       <div class="col-md-4">
-        <del>{{item.price}}</del>
+        <del>Rs.{{item.price}}</del>
 
       </div>
       <div class="col-md-4">
-        <ins>{{item.price*(100-item.discountPercentage)/100}}</ins>
+        <ins>Rs.{{item.price*(100-item.discountPercentage)/100}}</ins>
 
       </div>
     </div>

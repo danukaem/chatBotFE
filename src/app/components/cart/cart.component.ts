@@ -56,7 +56,7 @@ export class CartComponent implements OnInit {
 
 
     } else {
-      this.http.get<any>(`${this.resourceBaseURL}` + 'cartItem/getCartItemListByIp/' + this.ip.ipAddress, {
+      this.http.get<any>(`${this.resourceBaseURL}` + 'cartItem/getCartItemListByIp/' + this.ip.getIpAddress(), {
         observe: 'response',
         headers
       }).subscribe(response => {
@@ -95,7 +95,7 @@ export class CartComponent implements OnInit {
     orderDetail.orderDate = new Date();
     orderDetail.purchaseDate = new Date();
     orderDetail.stateOfOrder = 'PAID';
-    orderDetail.sessionId = this.ip.ipAddress;
+    orderDetail.sessionId = this.ip.getIpAddress();
 
 
     const headers = new HttpHeaders(({Authorization: 'Basic ' + btoa('user' + ':' + 'password')}));
