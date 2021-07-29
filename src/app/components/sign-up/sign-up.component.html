@@ -10,14 +10,14 @@
 
     <div class="form-group">
       <label for="exampleInputEmail1">Email address</label>
-      <input #eml  [(ngModel)]="userDetails.email" name="email" type="email" class="form-control" id="exampleInputEmail1"
+      <input #eml [(ngModel)]="userDetails.email" name="email" type="email" class="form-control" id="exampleInputEmail1"
              aria-describedby="emailHelp"
              placeholder="Enter email">
       <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
     </div>
     <div class="form-group">
       <label for="exampleInputPassword1">Password</label>
-      <input #pswd  [(ngModel)]="userDetails.password" name="password" type="password" class="form-control"
+      <input #pswd [(ngModel)]="userDetails.password" name="password" type="password" class="form-control"
              id="exampleInputPassword1" placeholder="Password">
     </div>
     <div class="form-group">
@@ -38,20 +38,48 @@
       </div>
 
     </div>
+
+    <div class="form-group">
+      <label>Occupation</label>
+      <div class="row">
+        <div class="col-md-2">
+
+        </div>
+        <div class="col-md-4">
+          <select #occupation class="form-control"
+                  (change)="selectOccupation($event.target.value)">
+            <option class="dropdown-item" value="ACCOUNTANT">Accountant</option>
+            <option class="dropdown-item" value="MANAGER">Manager</option>
+            <option class="dropdown-item" value="ENGINEER">Engineer</option>
+            <option class="dropdown-item" value="TEACHER">Teacher</option>
+            <option class="dropdown-item" value="DOCTOR">Doctor</option>
+            <option class="dropdown-item" value="LAWYER">Lawyer</option>
+            <option class="dropdown-item" value="DRIVER">Driver</option>
+            <option class="dropdown-item" value="CHEF">Chef</option>
+            <option class="dropdown-item" value="BUSINESSMAN">Businessman</option>
+            <option class="dropdown-item" value="OTHER">Other</option>
+          </select>
+        </div>
+        <div class="col-md-6">
+        </div>
+      </div>
+    </div>
+
     <div class="form-group">
       <label for="exampleInputAge">Age</label>
-      <input #age  [(ngModel)]="userDetails.age" name="age" type="text" class="form-control"
+      <input #age [(ngModel)]="userDetails.age" name="age" type="text" class="form-control"
              id="exampleInputAge" placeholder="Age">
     </div>
 
     <div class="form-group">
       <label for="Country">Country</label>
-      <input #cntry  [(ngModel)]="userDetails.country" name="country" type="text" class="form-control" id="Country"
+      <input #cntry [(ngModel)]="userDetails.country" name="country" type="text" class="form-control" id="Country"
              placeholder="Country">
     </div>
     <div class="form-group">
       <label for="city">city</label>
-      <input #cty  [(ngModel)]="userDetails.city" name="city" type="text" class="form-control" id="city" placeholder="city">
+      <input #cty [(ngModel)]="userDetails.city" name="city" type="text" class="form-control" id="city"
+             placeholder="city">
     </div>
     <button type="submit" class="btn btn-primary" (click)="signUp()">Submit</button>
     <br>

@@ -8,6 +8,7 @@ export class UserDetails {
   public city: string;
   public age: string;
   public sessionId: string;
+  public occupation: string;
 
   constructor() {
   }

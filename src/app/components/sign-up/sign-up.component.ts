@@ -63,4 +63,8 @@ export class SignUpComponent implements OnInit {
 
   }
 
+  selectOccupation(occupation: any) {
+    this.userDetails.occupation = occupation;
+
+  }
 }
