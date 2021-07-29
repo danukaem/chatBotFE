@@ -249,7 +249,7 @@ export class IpServiceService {
       text += possible.charAt(Math.floor(Math.random() * possible.length));
     }
     console.log('----------------------------------------------------------------------------------')
-    console.log(text)
+    console.log(text);
     console.log('----------------------------------------------------------------------------------')
     return text;
   }

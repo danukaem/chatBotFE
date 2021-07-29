@@ -1,16 +1,21 @@
-#map-div iframe{
+#map-div iframe {
   width: 100%;
 }
-.router-outlet-div{
+
+.router-outlet-div {
   display: inline-block;
   width: 100%;
   margin-bottom: 100px;
 }
-.chat-message-div{
+
+.site-body{
+  background-image: url("../assets/images/homepage/slider/b6.png");
+  background-size: cover;
+}
+.chat-message-div {
   display: inline-block;
 
 }
-
 
 .owl-carousel .animated {
   -webkit-animation-duration: 1000ms;
@@ -1910,11 +1915,11 @@ div.cart-collaterals ul.products li.product:hover .add_to_cart_button {
 
 }
 
-.signOut_lbl{
+.signOut_lbl {
   margin: 1%;
   /*margin: 10px;*/
 }
 
-.signOut_lbl:hover{
+.signOut_lbl:hover {
   cursor: pointer;
 }
