@@ -24,7 +24,7 @@
 }
 
 .message_content {
-  height: 250px;
+  height: 300px;
   padding: 2px;
   overflow-y: scroll;
   background-image: url("../../../assets/images/img/rasaChatBG1.jpg");
