@@ -12,6 +12,8 @@ export class Item {
   public brand: string;
   public color: string;
   public storage: string;
+  public processor: string;
+
 
 
   constructor() {

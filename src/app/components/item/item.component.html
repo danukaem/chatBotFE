@@ -51,7 +51,30 @@
       <input [(ngModel)]="item.ram" name="ram" type="number" class="form-control"
              id="ram" placeholder="ram size in GB">
     </div>
+    <div class="form-group">
+      <div class="row">
+        <div class="col-md-3">
+          <label for="color">Processor</label>
+        </div>
+        <div class="col-md-6">
+          <select class=" col-md-4 btn btn-secondary " type="button" id="processor" name="processor"
+                  (change)="processorSelect($event.target.value)">
+            <option class="dropdown-item" value="i3">i3</option>
+            <option class="dropdown-item" value="i5">i5</option>
+            <option class="dropdown-item" value="i7">i7</option>
+            <option class="dropdown-item" value="i9">i9</option>
+            <option class="dropdown-item" value="dualcore">dual core</option>
+            <option class="dropdown-item" value="coretoduo">core to duo</option>
+            <option class="dropdown-item" value="coretoquad">core to quad</option>
+            <option class="dropdown-item" value="Quadcore">Quad-core</option>
+            <option class="dropdown-item" value="Octacore">Octa-core</option>
+            <option class="dropdown-item" value="Hexacore">Hexa-core</option>
 
+          </select>
+        </div>
+
+      </div>
+    </div>
     <div class="form-group">
       <label for="screen">Screen</label>
       <input [(ngModel)]="item.screen" name="screen" type="number" class="form-control"

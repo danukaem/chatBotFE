@@ -28,6 +28,9 @@ export class SignUpComponent implements OnInit {
 
   ngOnInit() {
     this.userDetails.gender = 'MALE';
+    this.userDetails.district = 'Ampara';
+    this.userDetails.country = 'Sri Lanka';
+    this.userDetails.occupation = 'ACCOUNTANT';
   }
 
   signUp() {

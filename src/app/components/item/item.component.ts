@@ -75,4 +75,9 @@ export class ItemComponent implements OnInit {
     this.item.brand = brand;
 
   }
+
+  processorSelect(value: any) {
+    this.item.processor = value;
+
+  }
 }
