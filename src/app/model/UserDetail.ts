@@ -5,7 +5,7 @@ export class UserDetails {
   public password: string;
   public gender: string;
   public country: string;
-  public city: string;
+  public district: string;
   public age: string;
   public sessionId: string;
   public occupation: string;

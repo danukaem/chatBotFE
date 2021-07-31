@@ -32,11 +32,11 @@
         <div class="single-sidebar">
           <h2 class="sidebar-title">Recent Posts</h2>
           <ul>
-            <li><a href="#">Samsung Galaxy A12 2021</a></li>
-            <li><a href="#">Apple iphone 12 2020</a></li>
-            <li><a href="#">Nokia C1 2nd edition 2021</a></li>
-            <li><a href="#">Oppo Reno 6 Z 2019</a></li>
-            <li><a href="#">Mocrosoft Surface Duo 2020</a></li>
+            <li><a style="color: white">Samsung Galaxy A12 2021</a></li>
+            <li><a style="color: white">Apple iphone 12 2020</a></li>
+            <li><a style="color: white">Nokia C1 2nd edition 2021</a></li>
+            <li><a style="color: white">Oppo Reno 6 Z 2019</a></li>
+            <li><a style="color: white">Mocrosoft Surface Duo 2020</a></li>
           </ul>
         </div>
       </div>
@@ -142,13 +142,13 @@
             <div class="cart-collaterals">
 
 
-              <div class="cross-sells">
-                <h2>You may be interested in...</h2>
+              <div class="cross-sells" style="color: white">
+                <h2 style="color: white">You may be interested in...</h2>
                 <ul class="products">
                   <li *ngFor="let item of this.ip.recommendedItemsList" class="product  col-md-5">
                     <a href="single-product.html">
                       <img width="300" height="300" alt="T_4_front"
-                           class="attachment-shop_catalog wp-post-image"  src="{{item.imgSrc}}">
+                           class="attachment-shop_catalog wp-post-image" src="{{item.imgSrc}}">
                       <div class="interested-item">
                         <h6>{{item.itemName}}</h6>
                         <span class="price"><span class="amount">£{{item.price}}</span></span>

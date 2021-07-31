@@ -50,6 +50,7 @@
                   (change)="selectOccupation($event.target.value)">
             <option class="dropdown-item" value="ACCOUNTANT">Accountant</option>
             <option class="dropdown-item" value="MANAGER">Manager</option>
+            <option class="dropdown-item" value="LECTURER">Lecturer</option>
             <option class="dropdown-item" value="ENGINEER">Engineer</option>
             <option class="dropdown-item" value="TEACHER">Teacher</option>
             <option class="dropdown-item" value="DOCTOR">Doctor</option>
@@ -67,19 +68,59 @@
 
     <div class="form-group">
       <label for="exampleInputAge">Age</label>
-      <input #age [(ngModel)]="userDetails.age" name="age" type="text" class="form-control"
+      <input #age [(ngModel)]="userDetails.age" name="age" type="number" class="form-control"
              id="exampleInputAge" placeholder="Age">
     </div>
 
     <div class="form-group">
       <label for="Country">Country</label>
       <input #cntry [(ngModel)]="userDetails.country" name="country" type="text" class="form-control" id="Country"
-             placeholder="Country">
+             placeholder="Sri Lanka" disabled>
     </div>
+    <!--<div class="form-group">-->
+      <!--<label for="city">city</label>-->
+      <!--<input #cty [(ngModel)]="userDetails.city" name="city" type="text" class="form-control" id="city"-->
+             <!--placeholder="city">-->
+    <!--</div>-->
     <div class="form-group">
-      <label for="city">city</label>
-      <input #cty [(ngModel)]="userDetails.city" name="city" type="text" class="form-control" id="city"
-             placeholder="city">
+      <label>District</label>
+      <div class="row">
+        <div class="col-md-2">
+
+        </div>
+        <div class="col-md-4">
+          <select #cty class="form-control"
+                  (change)="selectDistrict($event.target.value)">
+            <option class="dropdown-item" value="Ampara">Ampara</option>
+            <option class="dropdown-item" value="Anuradhapura">Anuradhapura</option>
+            <option class="dropdown-item" value="Badulla">Badulla</option>
+            <option class="dropdown-item" value="Batticaloa">Batticaloa</option>
+            <option class="dropdown-item" value="Colombo">Colombo</option>
+            <option class="dropdown-item" value="Galle">Galle</option>
+            <option class="dropdown-item" value="Gampaha">Gampaha</option>
+            <option class="dropdown-item" value="Hambantota">Hambantota</option>
+            <option class="dropdown-item" value="Jaffna">Jaffna</option>
+            <option class="dropdown-item" value="Kalutara">Kalutara</option>
+            <option class="dropdown-item" value="Kandy">Kandy</option>
+            <option class="dropdown-item" value="Kegalle">Kegalle</option>
+            <option class="dropdown-item" value="Kilinochchi">Kilinochchi</option>
+            <option class="dropdown-item" value="Kurunegala">Kurunegala</option>
+            <option class="dropdown-item" value="Mannar">Mannar</option>
+            <option class="dropdown-item" value="Matale">Matale</option>
+            <option class="dropdown-item" value="Matara">Matara</option>
+            <option class="dropdown-item" value="Monaragala">Monaragala</option>
+            <option class="dropdown-item" value="Mullaitivu">Mullaitivu</option>
+            <option class="dropdown-item" value="Nuwara">Nuwara Eliya</option>
+            <option class="dropdown-item" value="Polonnaruwa">Polonnaruwa</option>
+            <option class="dropdown-item" value="Puttalam">Puttalam</option>
+            <option class="dropdown-item" value="Ratnapura">Ratnapura</option>
+            <option class="dropdown-item" value="Trincomalee">Trincomalee</option>
+            <option class="dropdown-item" value="Vavuniya">Vavuniya</option>
+          </select>
+        </div>
+        <div class="col-md-6">
+        </div>
+      </div>
     </div>
     <button type="submit" class="btn btn-primary" (click)="signUp()">Submit</button>
     <br>
