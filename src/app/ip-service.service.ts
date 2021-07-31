@@ -24,6 +24,7 @@ export class IpServiceService {
   recommendedItemsList: Item[] = [];
 
   itemDetailsList: Item[] = [];
+  advancedSearch = false;
 
   constructor(private http: HttpClient) {
     this.resourceBaseURL = environment.resourceBaseURL;
@@ -84,6 +85,13 @@ export class IpServiceService {
     return this.userId;
   }
 
+  public setAdvancedSearch(value: any) {
+    this.advancedSearch = value;
+  }
+
+  public getAdvancedSearch() {
+    return this.advancedSearch;
+  }
 
   public itemListLoading() {
     const headers = new HttpHeaders(({Authorization: 'Basic ' + btoa('user' + ':' + 'password')}));
@@ -102,7 +110,7 @@ export class IpServiceService {
   public recommenItemListLoading() {
     const headers = new HttpHeaders(({Authorization: 'Basic ' + btoa('user' + ':' + 'password')}));
 
-    this.http.get<any>(`${this.resourceBaseURL}` + 'item/getRecommendItems?userId=' + this.userId + '&sessionId=' + this.getIpAddress(), {
+    this.http.get<any>(`${this.resourceBaseURL}` + 'item/getRecommendItems?userId=' + this.userId + '&sessionId=' + this.getIpAddress() + '&advancedSearch=' + this.getAdvancedSearch(), {
       observe: 'response',
       headers
     }).subscribe(response => {
