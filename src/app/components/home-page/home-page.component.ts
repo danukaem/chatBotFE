@@ -21,9 +21,13 @@ export class HomePageComponent implements OnInit {
   }
 
   ngOnInit() {
-    $('#sidebar-div').click(() => {
-      $('.sidebar').toggleClass('fliph');
-    });
+    // $('#sidebar-div').click(() => {
+    //   $('.sidebar').toggleClass('fliph');
+    // });
+
+    if (localStorage.getItem('userId') != null) {
+      this.ip.recommendItemsLoadHomePage();
+    }
   }
 
 }

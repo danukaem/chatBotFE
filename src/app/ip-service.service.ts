@@ -123,6 +123,24 @@ export class IpServiceService {
 
   }
 
+
+  public recommendItemsLoadHomePage() {
+    const headers = new HttpHeaders(({Authorization: 'Basic ' + btoa('user' + ':' + 'password')}));
+
+    this.http.get<any>(`${this.resourceBaseURL}` + 'item/recommendItemsLoadHomePage?userId=' + this.userId + '&sessionId=' + this.getIpAddress()  , {
+      observe: 'response',
+      headers
+    }).subscribe(response => {
+      if (response.body != null) {
+        this.itemDetailsList = response.body;
+      }
+    }, error => {
+      alert('error in get recommend Item List loading in home page');
+    });
+
+  }
+
+
   public addToCart(cartItem: CartItem) {
     if (this.cartItems !== null) {
       this.cartItems.push(cartItem);
