@@ -36,7 +36,7 @@ export class UtilService {
     this.imageSrc.push({name: 'Microsoft Lumia 950 XL Dual SIM', path: './assets/images/homepage/phone/11.png'});
     this.imageSrc.push({name: 'HTC Butterfly 3', path: './assets/images/homepage/phone/12.png'});
     this.imageSrc.push({name: 'HTC Desire 520', path: './assets/images/homepage/phone/13.png'});
-    this.imageSrc.push({name: 'Blackberry KEYone', path: './assets/images/homepage/phone/14.png'});
+    this.imageSrc.push({name: 'Blackberry KEYone ', path: './assets/images/homepage/phone/14.png'});
     this.imageSrc.push({name: 'Blackberry Leap', path: './assets/images/homepage/phone/15.png'});
     this.imageSrc.push({name: 'Google Pixel XL', path: './assets/images/homepage/phone/16.png'});
     this.imageSrc.push({name: 'Google Pixel XL', path: './assets/images/homepage/phone/17.png'});
