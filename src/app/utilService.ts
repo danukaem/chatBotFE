@@ -40,6 +40,7 @@ export class UtilService {
     this.imageSrc.push({name: 'Blackberry Leap', path: './assets/images/homepage/phone/15.png'});
     this.imageSrc.push({name: 'Google Pixel XL', path: './assets/images/homepage/phone/16.png'});
     this.imageSrc.push({name: 'Google Pixel XL', path: './assets/images/homepage/phone/17.png'});
+    this.imageSrc.push({name: 'HTC One S9', path: './assets/images/homepage/phone/18.png'});
 
 
   }
