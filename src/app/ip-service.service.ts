@@ -25,6 +25,7 @@ export class IpServiceService {
 
   itemDetailsList: Item[] = [];
   advancedSearch = false;
+  showLoading = false;
 
   constructor(private http: HttpClient) {
     this.resourceBaseURL = environment.resourceBaseURL;
@@ -108,16 +109,23 @@ export class IpServiceService {
   }
 
   public recommenItemListLoading() {
+    this.showLoading = true;
     const headers = new HttpHeaders(({Authorization: 'Basic ' + btoa('user' + ':' + 'password')}));
 
     this.http.get<any>(`${this.resourceBaseURL}` + 'item/getRecommendItems?userId=' + this.userId + '&sessionId=' + this.getIpAddress() + '&advancedSearch=' + this.getAdvancedSearch(), {
       observe: 'response',
       headers
     }).subscribe(response => {
-      if (response.body != null) {
-        this.itemDetailsList = response.body;
-      }
+      setTimeout(() => {
+        this.showLoading = false;
+
+        if (response.body != null) {
+          this.itemDetailsList = response.body;
+        }
+      }, 1000);
     }, error => {
+      this.showLoading = false;
+
       alert('error in get recommend Item List loading');
     });
 
@@ -127,7 +135,7 @@ export class IpServiceService {
   public recommendItemsLoadHomePage() {
     const headers = new HttpHeaders(({Authorization: 'Basic ' + btoa('user' + ':' + 'password')}));
 
-    this.http.get<any>(`${this.resourceBaseURL}` + 'item/recommendItemsLoadHomePage?userId=' + this.userId + '&sessionId=' + this.getIpAddress()  , {
+    this.http.get<any>(`${this.resourceBaseURL}` + 'item/recommendItemsLoadHomePage?userId=' + this.userId + '&sessionId=' + this.getIpAddress(), {
       observe: 'response',
       headers
     }).subscribe(response => {

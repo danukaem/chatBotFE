@@ -1,40 +1,12 @@
-<!--<div class="container">-->
-<!--<h1>Item List</h1>-->
-<!--<div class="row">-->
-
-<!--<div *ngFor="let item of items" class="card col-md-6 " style="width: 18rem;">-->
-<!--<div class="card-body ">-->
-<!--<div class="row">-->
-<!--<div class="col-md-8">-->
-<!--<h5 class="card-title">{{item.itemName}}</h5>-->
-<!--<p class="card-text">{{item.itemId}}</p>-->
-<!--<p class="card-text">{{item.itemCode}}</p>-->
-<!--<p class="card-text">{{item.description}}</p>-->
-<!--<p class="card-text">{{item.price}}</p>-->
-<!--</div>-->
-<!--<div class="col-md-4">-->
-<!--<input #quantity  type="number" class="form-control"  placeholder="quantity">-->
-
-<!--<button type="submit" class="btn btn-primary" (click)="addToCart(item,quantity.value)">add to cart</button>-->
-
-<!--</div>-->
-<!--</div>-->
-<!--</div>-->
-
-<!--</div>-->
-
-<!--</div>-->
-
-<!--</div>-->
-
-
 <div class="product-big-title-area">
   <div class="container">
     <div class="row">
       <div class="col-md-12">
         <div class="product-bit-title text-center">
           <h2 style="display: inline-block;"><b>Shop</b></h2>
-          <span *ngIf="ipService.userId!== null"  style="position: relative;float: right;font-size: 20px; color: antiquewhite ; padding: 20px">Advanced Search &nbsp;&nbsp; <input #advancedSearch type="checkbox" (change)="ipService.setAdvancedSearch($event.target.checked)"  > </span>
+          <span *ngIf="ipService.userId!== null"
+                style="position: relative;float: right;font-size: 20px; color: antiquewhite ; padding: 20px">Advanced Search &nbsp;&nbsp; <input
+            #advancedSearch type="checkbox" (change)="ipService.setAdvancedSearch($event.target.checked)"> </span>
         </div>
       </div>
     </div>
@@ -43,33 +15,12 @@
 
 <div class="single-product-area">
   <div class="zigzag-bottom"></div>
-  <div class="container">
-    <div class="row" >
-      <app-shop-item *ngFor="let item of this.ipService.itemDetailsList" [item]=item   class="col-md-3 col-sm-6"></app-shop-item>
-
-
-      <!--<div class="col-md-3 col-sm-6">-->
-        <!--<div class="single-shop-product">-->
-          <!--<div class="product-upper">-->
-            <!--<img src="../../../../assets/images/img/product-3.jpg" alt="">-->
-          <!--</div>-->
-          <!--<h2><a href="">Apple new mac book 2015 March :P</a></h2>-->
-          <!--<div class="product-carousel-price">-->
-            <!--<ins>$899.00</ins>-->
-            <!--<del>$999.00</del>-->
-          <!--</div>-->
-
-          <!--<div class="product-option-shop">-->
-            <!--<a class="add_to_cart_button" data-quantity="1" data-product_sku="" data-product_id="70"-->
-               <!--rel="nofollow" href="/canvas/shop/?add-to-cart=70">Add to cart</a>-->
-          <!--</div>-->
-        <!--</div>-->
-      <!--</div>-->
-
-
-
-
+  <div class="container" *ngIf="!this.ipService.showLoading">
+    <div class="row">
+      <app-shop-item *ngFor="let item of this.ipService.itemDetailsList" [item]=item
+                     class="col-md-3 col-sm-6"></app-shop-item>
     </div>
+
 
     <div class="row">
       <div class="col-md-12">
@@ -90,4 +41,36 @@
     </div>
 
   </div>
+  <div class="container">
+    <div class="row">
+      <div *ngIf="this.ipService.showLoading">
+        <div class="spinner-grow text-primary" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+        <div class="spinner-grow text-secondary" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+        <div class="spinner-grow text-success" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+        <div class="spinner-grow text-danger" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+        <div class="spinner-grow text-warning" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+        <div class="spinner-grow text-info" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+        <div class="spinner-grow text-light" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+        <div class="spinner-grow text-dark" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
 </div>
