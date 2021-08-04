@@ -28,6 +28,8 @@ export class HomePageComponent implements OnInit {
     if (localStorage.getItem('userId') != null) {
       this.ip.recommendItemsLoadHomePage();
     }
+
+    this.ip.setAdvancedSearch(true);
   }
 
 }

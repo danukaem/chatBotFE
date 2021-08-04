@@ -20,6 +20,8 @@ export class ItemListComponent implements OnInit {
 
   ngOnInit() {
     this.ipService.itemListLoading();
+    this.ipService.setAdvancedSearch(false);
+
     // const headers = new HttpHeaders(({Authorization: 'Basic ' + btoa('user' + ':' + 'password')}));
     //
     // this.http.get<any>(`${this.resourceBaseURL}` + 'item/getItemList', {
