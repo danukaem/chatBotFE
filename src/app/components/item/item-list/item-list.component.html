@@ -16,9 +16,13 @@
 <div class="single-product-area">
   <div class="zigzag-bottom"></div>
   <div class="container" *ngIf="!this.ipService.showLoading">
-    <div class="row">
+    <div class="row" *ngIf="this.ipService.itemDetailsList.length > 0">
       <app-shop-item *ngFor="let item of this.ipService.itemDetailsList" [item]=item
                      class="col-md-3 col-sm-6"></app-shop-item>
+    </div>
+
+    <div class="row" *ngIf="this.ipService.itemDetailsList.length == 0">
+     <h1>there is no suitable items</h1>
     </div>
 
 

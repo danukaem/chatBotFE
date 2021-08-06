@@ -1,9 +1,10 @@
 <div class="single-shop-product">
   <div class="product-upper">
-    <span class="image-header-txt"><b style="font-size: 24px; color:white;">{{item.brand}}</b> &nbsp;&nbsp; {{item.ram}}GB ram  {{item.screen}}inch screen {{item.processor}} processor {{item.storage}}GB hard  {{item.color}} color</span>
+    <span class="image-header-txt" [ngStyle]="{background: getColor(),color:getFontColor()}" style="font-size: 15px"><b
+      style="font-size: 24px; color:white;">{{item.brand}}</b> &nbsp;&nbsp; {{item.ram}}GB ram  {{item.screen}}inch screen {{item.processor}} processor {{item.storage}}GB hard  {{item.color}} color</span>
     <img src={{item.imgSrc}} alt="">
   </div>
-  <h2 style="background-color: rgba(28,255,245,0.29); font-size: 25px"> <span >{{item.itemName}}</span></h2>
+  <h2 style="background-color: rgba(28,255,245,0.29); font-size: 25px"><span>{{item.itemName}}</span></h2>
   <div class="product-carousel-price">
     <div class="row">
       <div class="col-md-6">
@@ -11,13 +12,13 @@
 
       </div>
       <div class="col-md-6" style="position: relative;float: right">
-        <span>  {{item.discountPercentage}} % Discount</span>
+        &nbsp;&nbsp; <span>  {{item.discountPercentage}} % Discount</span>
 
       </div>
     </div>
   </div>
 
-  <input #quantity type="number" class="form-control" placeholder="quantity" #qty >
+  <input #quantity type="number" class="form-control" placeholder="quantity" #qty>
 
   <div class="product-option-shop">
     <button class="add_to_cart_button" data-quantity="1" data-product_sku="" data-product_id="70"

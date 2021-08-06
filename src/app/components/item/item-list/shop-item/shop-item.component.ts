@@ -16,6 +16,7 @@ export class ShopItemComponent implements OnInit {
   @Input() item: Item;
   resourceBaseURL: string;
 
+
   @ViewChild('qty') qty;
 
   constructor(private http: HttpClient, private ipService: IpServiceService) {
@@ -36,5 +37,14 @@ export class ShopItemComponent implements OnInit {
     this.ipService.addToCart(cItem);
 
     this.qty.nativeElement.value = '';
+  }
+
+  getColor() {
+    return this.item.forecasted === true ? '#9f5cff' : '#ffb82c';
+  }
+
+  getFontColor() {
+    return this.item.forecasted === true ? '#ffc78f' : 'blue';
+
   }
 }

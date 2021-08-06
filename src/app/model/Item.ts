@@ -13,6 +13,7 @@ export class Item {
   public color: string;
   public storage: string;
   public processor: string;
+  public forecasted: boolean;
 
 
 

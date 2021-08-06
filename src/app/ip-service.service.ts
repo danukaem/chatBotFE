@@ -121,6 +121,8 @@ export class IpServiceService {
 
         if (response.body != null) {
           this.itemDetailsList = response.body;
+          console.log(this.itemDetailsList)
+
         }
       }, 1000);
     }, error => {
@@ -141,6 +143,7 @@ export class IpServiceService {
     }).subscribe(response => {
       if (response.body != null) {
         this.itemDetailsList = response.body;
+        console.log(this.itemDetailsList)
       }
     }, error => {
       alert('error in get recommend Item List loading in home page');
