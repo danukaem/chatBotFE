@@ -112,7 +112,7 @@ export class IpServiceService {
     this.showLoading = true;
     const headers = new HttpHeaders(({Authorization: 'Basic ' + btoa('user' + ':' + 'password')}));
 
-    this.http.get<any>(`${this.resourceBaseURL}` + 'item/getRecommendItems?userId=' + this.userId + '&sessionId=' + this.getIpAddress() + '&advancedSearch=' + this.getAdvancedSearch(), {
+    this.http.get<any>(`${this.resourceBaseURL}` + 'item/getRecommendItems?userId=' + this.userId + '&sessionId=' + this.getIpAddress() + '&advancedSearch=' + this.getAdvancedSearch() + '&sqlSearch=' + true, {
       observe: 'response',
       headers
     }).subscribe(response => {
@@ -143,7 +143,7 @@ export class IpServiceService {
     }).subscribe(response => {
       if (response.body != null) {
         this.itemDetailsList = response.body;
-        console.log(this.itemDetailsList)
+        console.log(this.itemDetailsList);
       }
     }, error => {
       alert('error in get recommend Item List loading in home page');
